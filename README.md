@@ -5,7 +5,7 @@
 
 Buat file `/server/config.env` dan isi dengan URI Atlas dan port:
 ```
-ATLAS_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/
+ATLAS_URI=mongodb+srv://<username>:<password>@eduploredb.8thpm.mongodb.net/?retryWrites=true&w=majority&appName=EduPloreDB
 PORT=5050
 ```
 
