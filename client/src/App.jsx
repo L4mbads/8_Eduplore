@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="w-full">
+    <div className="w-full bg-gray">
       <Navbar />
       <Outlet />
     </div>
