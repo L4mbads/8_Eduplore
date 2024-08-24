@@ -1,56 +1,76 @@
+import fs from 'fs';
+import path from 'path';
 import nodemailer from 'nodemailer';
+import { fileURLToPath } from 'url';
 
+// Email account credentials
+const user = 'eduplore.kelompok8@gmail.com'; // Your company email
+const pass = 'meak ihic uatm cjgw'; // Your app password
 
-const user = 'eduplore.kelompok8@gmail.com' // This is our email
-const pass = 'meak ihic uatm cjgw' // This is our password, DON'T CHANGE IT!
-let recipient = 'rizacal.mamen@gmail.com' // temporary recipient address (interchangable)
-let recipient_name = 'L4mbads'
+// Email template file and index
+let html_package = 'SignUp.html'; // Name for the HTML template file
+let index = 0; // Index that correlates with 'type_of_email'
+
+// Types of email subjects
+const type_of_email = [
+  'terimakasih telah mendaftar dengan kami!', // Sign-Up
+  'terimakasih telah berlangganan dengan SuperCamp', // SuperCamp
+  'terimakasih telah berlangganan dengan Super-Exclusive', // Super-Exclusive
+  'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
+];
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Set recipient-specific data
+let recipient_email = 'rhiobimoprakoso.s@gmail.com'; // Temporary recipient address
+let recipientData = {
+  username: 'Rhio', // Recipient's username
+  etc: 'Testing', // Additional data
+};
+
+// Function to load and customize the template
+function loadTemplate(filePath, data) {
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File not found: ${filePath}`);
+  }
+  let template = fs.readFileSync(filePath, 'utf-8');
+
+  // Replace placeholders with actual data
+  for (const key in data) {
+    template = template.replace(new RegExp(`{{${key}}}`, 'g'), data[key]);
+  }
+
+  return template;
+}
 
 // Configure the transporter
 let transporter = nodemailer.createTransport({
-  service: 'gmail', // You can use other services like Outlook, Yahoo, etc.
+  service: 'gmail',
   auth: {
     user: user,
     pass: pass,
   },
 });
 
+// Load and customize the template
+const templatePath = path.join(__dirname, 'html_template', html_package);
+console.log(`Loading template from: ${templatePath}`);
+const customizedHtml = loadTemplate(templatePath, recipientData);
+
 // Email options
 let mailOptions = {
   from: user,
-  to: recipient, // List of recipients
-  subject: 'Hello, ' + recipient_name + ' Your order has been received!', // Subject line
-  text: 'Hello, this is a test email sent from Node.js!', // Plain text body
-  html: `
-    <div style="font-family: Arial, sans-serif; color: #333;">
-      <h2 style="color: #0056b3;">Meeting Reminder</h2>
-      <p>Hi there,</p>
-      <p>This is a friendly reminder for our upcoming meeting:</p>
-      <ul>
-        <li><strong>Date:</strong> Tomorrow</li>
-        <li><strong>Time:</strong> 10:00 AM</li>
-        <li><strong>Location:</strong> Conference Room B</li>
-      </ul>
-      <p>Please make sure to bring the following:</p>
-      <ol>
-        <li>Your laptop</li>
-        <li>Meeting agenda</li>
-        <li>Any relevant documents</li>
-      </ol>
-      <p>Looking forward to seeing you there!</p>
-      <p>Best regards,<br>Your Name</p>
-      <hr style="border: none; border-top: 1px solid #ddd;" />
-      <p style="font-size: 12px; color: #888;">
-        If you have any questions, feel free to <a href="mailto:your-email@gmail.com">contact me</a>.
-      </p>
-    </div>
-  `, // HTML body (optional)
+  to: recipient_email,
+  subject: `Halo ${recipientData.username}, ${type_of_email[index]}`, // Email subject
+  html: customizedHtml, // Customized HTML content
 };
 
 // Send the email
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
-    return console.log(error);
+    return console.error('Error sending email:', error);
   }
   console.log('Email sent: ' + info.response);
 });
