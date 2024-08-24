@@ -16,9 +16,10 @@ import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables
 
-const html_package = 'SuperCamp.html'; // Default template file
-const index = 1; // Index for the subject line
+const html_package = 'SuperExclusive.html'; // Default template file
+const index = 2; // Index for the subject line
 
+// 0 (signup), 1 (supercamp), 2 (superexclusive), 3 (superboost)
 const type_of_email = [
     'terimakasih telah mendaftar dengan kami!', // Sign-Up
     'terimakasih telah berlangganan dengan SuperCamp', // SuperCamp
@@ -26,13 +27,14 @@ const type_of_email = [
     'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
 ];
 
-let recipient_email = 'rhiobimoprakoso.s@gmail.com'; // Recipient email
+let recipient_email = 'rizacal.mamen@gmail.com'; // Recipient email
 let recipientData = {
-    username: 'Rhio',
+    username: 'L4mbads',
     kampus: 'MIT (Mbandung Institute of Technology)',
     calendar: null, // Default value, set to null if not needed
     month: null, // Default value, set to null if not needed
     year: null, // Default value, set to null if not needed
+    mentor: null, // Default value, set to null if not needed
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -131,11 +133,27 @@ function generateMonthYear() {
     return [month, year];
 }
 
+function generateMentorName() {
+    // Array of names
+    const names = [
+        'Aulia Rahmayanti','Bintang Saputra','Cakra Kawala','Dewi Murtisari','Eka Gunawan','Farhan Erza','Gita Cantika','Hadi Hanun','Ika Fadilah','Jaya Wirakarsa','Xena Denphilim',
+        'Kamil Ridwan','Laila Prisicilla','Mira Nda','Nanda Kertasari','Oki Oktaviana','Putra Lim','Rani Rahmayanti','Sari Roti','M Tariq Noor F','Ulfa Emanuel','Vira Cantika','Yuda Bastian',
+        'Zain Maher','Wira Swasta'
+    ];
+
+    const namesIndex = Math.floor(Math.random() * names.length);
+    const name = names[namesIndex];
+
+    return name;
+}
+
 // Conditionally include calendar data
 if (index === 1 || index === 2) {
     recipientData.calendar = generateCalendar();
     recipientData.month = generateMonthYear()[0];
     recipientData.year = generateMonthYear()[1];
+
+    if (index==2) {recipientData.mentor = generateMentorName()};
 }
 
 const templatePath = path.join(__dirname, 'html_template', html_package);
@@ -165,3 +183,10 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Email sent: ' + info.response);
 });
+
+
+/*
+To Do:
+1. Membuat Template HTML SuperBoost
+2. Connect Code dengan Back-end agar bisa ngirim email secara real
+*/
