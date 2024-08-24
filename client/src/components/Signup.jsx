@@ -179,9 +179,10 @@ export default function Signup() {
                             <p class="text-black mt-8 mb-2 text-center font-base">
                                 Sudah punya akun?
                             </p >
-                            <a class="text-center font-semibold text-lg text-blue hover:text-blue-80" href="#">
-                                Masuk
-                            </a>
+                            <NavLink class="text-center font-semibold text-lg text-blue hover:text-blue-80" to="/login">
+                                <p className="text-center font-semibold text-lg text-blue hover:text-blue-80">Klik disini untuk membuat akun!</p>
+                            </NavLink>
+
                         </form>
                         <p class="text-center text-gray-500 text-xs">
                             .
