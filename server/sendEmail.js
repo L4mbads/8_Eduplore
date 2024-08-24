@@ -16,8 +16,8 @@ import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables
 
-const html_package = 'SuperExclusive.html'; // Default template file
-const index = 2; // Index for the subject line
+const html_package = 'SuperBoost.html'; // Default template file
+const index = 3; // Index for the subject line
 
 // 0 (signup), 1 (supercamp), 2 (superexclusive), 3 (superboost)
 const type_of_email = [
