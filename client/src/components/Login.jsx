@@ -9,51 +9,45 @@ export default function Login() {
                 <img src="../src/assets/login_vector1.png" className="absolute left-0 bottom-1/3 h-1/2"></img>
                 <img src="../src/assets/login_vector2.png" className="absolute right-0 bottom-1/4 h-1/2"></img>
                 <div class="absolute inset-0 flex items-center justify-center z-10">
-                    <div class="bg-white xl:mx-32 mx-8 py-8 rounded-xl shadow-lg container ">
-                        <h1 class="xl:text-3xl text-xl font-bold text-black text-center">
-                            Selamat Datang Kembali!
-                        </h1>
-                        <p class="text-black mt-4 mx-32 text-center">
-                            Yuk, isi form di bawah ini untuk dapat mengakses fitur lengkap dan bimbingan terbaik dari Eduplore!
-                        </p>
-                        <div className="mb-4 mt-16 mx-36">
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Email"
-                                className="w-full p-3 rounded-lg border border-blue focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                        </div>
-                        <div className="mb-4 mx-36">
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Kata sandi"
-                                className="w-full p-3 rounded-lg border border-blue focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                        </div>
-                        <NavLink className="mx-36 text-blue font-bold text-sm">
-                            Lupa kata sandi?
-                        </NavLink>
+                    <div class="w-full max-w-lg">
+                        <form class="flex flex-col bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <h1 class="xl:text-3xl text-xl font-semibold text-black text-center">
+                                Selamat Datang Kembali!
+                            </h1>
+                            <p class="text-black my-8 text-center font-light">
+                                Yuk, isi form di bawah ini untuk dapat mengakses fitur lengkap dan bimbingan terbaik dari Eduplore!
+                            </p >
+                            <div class="mb-4">
 
-                        <div class="flex items-start mx-36 my-4">
-                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label for="default-checkbox" class="ms-2 text-sm font-small text-gray-900 dark:text-gray-300">Ingat Saya <br /><span className="text-xs">
-                                Jangan klik kolom ini jika perangkat kamu digunakan oleh orang lain.
-                            </span></label>
-                        </div>
-                        <div className="flex items-center justify-center text-center my-16 ">
-                            <NavLink className="whitespace-nowrap shadow-lg text-xl font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-blue hover:bg-slate-100 py-4 rounded-md px-3 text-white border-blue w-1/2" to="/create">
-                                Masuk
-                            </NavLink>
-                        </div>
-                        <div className="flex items-center justify-center mx-64 h-0.5  bg-blue" ></div>
-                        <div className="flex items-center justify-center text-center mt-16 text-lg ">
-                            Pengguna baru?
-                        </div>
-                        <NavLink className="flex items-center justify-center text-blue font-bold text-lg text-center mt-4 mb-16 ">
-                            Klik disini untuk buat akun!
-                        </NavLink>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" />
+                            </div>
+                            <div class="mb-6">
+
+                                <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Kata sandi" />
+                                <a class="pl-4 inline-block align-baseline font-semibold text-sm text-blue hover:text-blue-800" href="#">
+                                    Lupa kata sandi?
+                                </a>
+                            </div>
+                            <div class="flex items-cente justify-center mx-4">
+                                <button class="shadow grow bg-blue hover:bg-blue-60 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                    Sign In
+                                </button>
+
+                            </div>
+
+                            <div className="my-8 bg-blue h-0.5">
+
+                            </div>
+                            <p class="text-black mt-8 mb-2 text-center font-base">
+                                Pengguna baru?
+                            </p >
+                            <a class="text-center font-semibold text-sm text-blue hover:text-blue-800" href="#">
+                                Klik disini untuk buat akun!
+                            </a>
+                        </form>
+                        <p class="text-center text-gray-500 text-xs">
+                            .
+                        </p>
                     </div>
 
                 </div>
