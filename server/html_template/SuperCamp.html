@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #0059ff; /* Green accent */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #0059ff;
+            font-size: 20px;
+        }
+        .content h3 {
+            color: #4CAF50;
+            font-size: 18px;
+        }
+        .calendar {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .calendar table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .calendar th {
+            background-color: #4CAF50; /* Green header */
+            color: white;
+        }
+        .calendar .highlight {
+            background-color: #4CAF50; /* Full green box for highlighted dates */
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #f4f4f4;
+            border-top: 1px solid #ddd;
+        }
+        .footer p {
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SuperCamp Order Confirmation</h1>
+        </div>
+        <div class="content">
+            <h2>Halo {{username}},</h2>
+            <p>Terimakasih atas pembelian SuperCamp! Kami sangat menanti partisipasi anda!</p>
+            <p>Kamu dari kampus: <strong>{{kampus}}</strong>.</p>
+
+            <!-- Conditional Calendar Section -->
+            <h2>Your Session Schedule:</h2>
+            <h3><strong><center>{{month}}, {{year}}</center></strong></h3>
+            <div class="calendar">
+                <table>
+                    {{calendar}}
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <p> <a href="https://youtu.be/dQw4w9WgXcQ?si=3G_0qX7yxGj87Y0_">&copy; 2024 Eduplore </a>. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
