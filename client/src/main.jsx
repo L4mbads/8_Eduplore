@@ -8,10 +8,10 @@ import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
 
+import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
-
 import Home from "./components/Home";
 
 import "./index.css";
@@ -67,6 +67,16 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <Record />,
+      },
+    ],
+  },
+  {
+    path: "/about",
+    element: <App />,
+    children: [
+      {
+        path: "/about",
+        element: <About />,
       },
     ],
   },

@@ -7,8 +7,10 @@ export default function Navbar() {
     const { layananRef, beasiswaRef } = useScroll();
     const location = useLocation();
     return (
+
         <header className="sticky top-0 z-[9999] bg-white">
             <nav className="flex shadow-xl justify-between rounded-b-xl h-24 pt-6 pl-5 ">
+
                 <NavLink to="/">
                     <img alt="Eduplore" className="h-10 inline" src="../src/assets/eduplore(nama).png"></img>
                 </NavLink>
