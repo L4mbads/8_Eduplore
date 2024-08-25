@@ -9,6 +9,7 @@ import Record from "./components/Record";
 import RecordList from "./components/RecordList";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import UserPage from "./components/UserPage";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -40,12 +41,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/edit/:id",
+    path: "/user/:id",
     element: <App />,
     children: [
       {
-        path: "/edit/:id",
-        element: <Record />,
+        path: "/user/:id",
+        element: <UserPage />,
       },
     ],
   },
