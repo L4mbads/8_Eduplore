@@ -3,10 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 export default function Login() {
     const [form, setForm] = useState({
-        name: "",
         email: "",
-        phone: 0,
-        username: "",
         password: "",
     });
     const [isChecked, setIsChecked] = useState(false)
@@ -15,30 +12,7 @@ export default function Login() {
     const params = useParams();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchData() {
-            const id = params.id?.toString() || undefined;
-            if (!id) return;
-            setIsNew(false);
-            const response = await fetch(
-                `http://localhost:5050/record/${params.id.toString()}`
-            );
-            if (!response.ok) {
-                const message = `An error has occurred: ${response.statusText}`;
-                console.error(message);
-                return;
-            }
-            const record = await response.json();
-            if (!record) {
-                console.warn(`Record with id ${id} not found`);
-                navigate("/");
-                return;
-            }
-            setForm(record);
-        }
-        fetchData();
-        return;
-    }, [params.id, navigate]);
+
 
     // These methods will update the state properties.
     function updateForm(value) {
@@ -56,14 +30,15 @@ export default function Login() {
         try {
 
             if (!isChecked) {
-                setErrorMessage("Anda belum menyetujui")
-                return;
+                //setErrorMessage("Anda belum menyetujui")
+                //return;
             }
 
             let response;
             // if we are adding a new record we will POST to /record.
-            response = await fetch("http://localhost:5050/user-management/users", {
+            response = await fetch("http://localhost:5050/auth/login", {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -83,6 +58,17 @@ export default function Login() {
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
         }
+    }
+    async function logout() {
+        let response = await fetch("http://localhost:5050/auth/logout", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+
     }
 
     return (
@@ -116,7 +102,9 @@ export default function Login() {
                                 />
 
                             </div>
-
+                            <div className="mb-6 text-center text-orange font-bold">
+                                {errorMessage}
+                            </div>
                             <div class="flex  justify-center mx-4">
                                 <button class="shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                     Daftar
@@ -131,6 +119,8 @@ export default function Login() {
                             <NavLink class="text-center font-semibold text-lg text-blue hover:text-blue-80" to="/signup">
                                 <p className="text-center font-semibold text-lg text-blue hover:text-blue-80">Klik disini untuk membuat akun!</p>
                             </NavLink>
+
+                            <button onClick={logout} className="text-black text-xl" type="button"> tes logout </button>
                         </form>
                         <p class="text-center text-gray-500 text-xs">
                             .
