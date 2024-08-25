@@ -18,7 +18,7 @@ export const login = async (req, res, next) => {
 
             if (data) {
                 const token = createSecretToken(user._id);
-                res.cookie("token", token, {
+                res.cookie("auth-token", token, {
                     withCredentials: true,
                     httpOnly: false,
                 });
@@ -38,7 +38,7 @@ export const login = async (req, res, next) => {
 
 export const logout = (req, res, next) => {
     try {
-        res.clearCookie("token");
+        res.clearCookie("auth-token");
         return res.status(200).send({ message: "Succesfully logged out" });
     } catch (error) {
         console.log(error);

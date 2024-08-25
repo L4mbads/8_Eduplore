@@ -24,7 +24,7 @@ export const insertUser = async (req, res) => {
         let collection = await db.collection("users");
         let result = await collection.insertOne(newDocument);
         const token = createSecretToken(result.insertedId);
-        res.cookie("token", token, {
+        res.cookie("auth-token", token, {
             withCredentials: true,
             httpOnly: false,
         });

@@ -3,9 +3,9 @@ import { ObjectId } from "mongodb";
 import jwt from "jsonwebtoken";
 
 const userVerification = (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.cookies["auth-token"];
     if (!token) {
-        return res.status(401).json({ status: false, _token: token })
+        return res.status(401).json({ status: false })
     }
     jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
         if (err) {
