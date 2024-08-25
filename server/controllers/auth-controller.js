@@ -21,7 +21,8 @@ export const login = async (req, res, next) => {
                 const token = createSecretToken(user._id, expiration);
                 res.cookie("auth-token", token, {
                     withCredentials: true,
-                    httpOnly: false,
+                    httpOnly: true,
+                    secure: true,
                     maxAge: expiration,
 
                 });
