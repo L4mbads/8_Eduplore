@@ -14,9 +14,9 @@ app.use(cors({
     credentials: true,
 }));
 app.use(express.json());
+app.use(cookieParser());
 app.use("/user-management/users", userRoutes);
 app.use("/auth", authRoutes);
-app.use(cookieParser());
 // start the Express server
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
