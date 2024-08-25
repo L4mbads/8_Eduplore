@@ -7,18 +7,15 @@ import bcrypt from "bcrypt";
 // This help convert the id from string to ObjectId for the _id.
 
 
-import { insertUser, getAllUsers, getUserByEmail } from "../controllers/user-controller.js";
+import { insertUser, getUsers } from "../controllers/user-controller.js";
 
 // router is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const router = express.Router();
 
-// This section will help you get a list of all the records.
-router.get("/", getAllUsers);
-
-// This section will help you get a single record by id
-router.get("/:email", getUserByEmail);
+// This section will help you get a list of all possible users.
+router.get("/", getUsers);
 
 // This section will help you create a new record.
 router.post("/", insertUser);
