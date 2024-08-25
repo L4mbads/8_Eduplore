@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useRef } from "react";
 import { useScroll } from "./ScrollContext";
+import Footer from "./Footer";
 
 
 export default function Home() {
@@ -15,8 +16,8 @@ export default function Home() {
                 <div className="relative container mx-auto bg-blue items-start pl-10 pr-48 rounded-xl bg-gradient-to-r from-blue to-blue-40 shadow-lg"> {/* Home */}
                     <p className="font-bold text-white text-5xl pt-10">Informasi dan Bimbingan Beasiswa Terlengkap!</p>
                     <p className="font-bold text-white pt-6 text-xl italic">
-                    Nggak perlu bingung tentang persiapan beasiswa. <br/>Puluhan
-                    mentor profesional siap menemani dan membimbing perjalananmu!<br/>
+                        Nggak perlu bingung tentang persiapan beasiswa. <br />Puluhan
+                        mentor profesional siap menemani dan membimbing perjalananmu!<br />
                     </p>
                     <button className="font-bold text-white bg-orange inline-flex items-center justify-center rounded-md mt-10 mb-16 py-2 px-4 shadow-xl btn" onClick={() => {
                         layananRef.current?.scrollIntoView({
@@ -179,9 +180,9 @@ export default function Home() {
                         <a className="font-bold text-white bg-orange inline-flex items-center justify-center rounded-md mx-20 my-4 shadow-xl " href="https://beasiswa.baznas.go.id/program-beasiswa">
                             selengkapnya
                         </a>
-                        
+
                     </div>
-                    
+
 
                 </div>
             </div>
@@ -201,12 +202,12 @@ export default function Home() {
                                     Rating: 4.7
                                 </div>
                                 <div className="mt-10">
-                                    <p>Ikuti kelas intensif bersama para awardee selama rangkaian persiapan. 
+                                    <p>Ikuti kelas intensif bersama para awardee selama rangkaian persiapan.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    
+
                     </NavLink>
                     <NavLink className="relative bg-white items-start rounded-xl w-full"> {/* 2 */}
                         <div className="flex gap-x-4 justify-between my-10">
@@ -223,7 +224,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                    
+
                     </NavLink>
                     <NavLink className="relative bg-white items-start rounded-xl w-full"> {/* 3 */}
                         <div className="flex gap-x-4 justify-between my-10">
@@ -238,10 +239,10 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                    
+
                     </NavLink>
                 </div>
-                
+
             </div>
 
             <div className="pt-64 px-16"> {/* judul mengepa Eduplore */}
@@ -278,10 +279,10 @@ export default function Home() {
                 <img src="../src/assets/Vector 2.png" className="absolute bottom-20 left-0 size-max"></img>
                 <div className="grid grid-cols-2 ml-10 gap-x-20">
                     <div>
-                        <p className="text-blue text-xl font-bold">RIBUAN orang telah meraih 
-                        beasiswa impiannya di</p>
+                        <p className="text-blue text-xl font-bold">RIBUAN orang telah meraih
+                            beasiswa impiannya di</p>
                         <p className="text-blue text-3xl font-bold ml-10 pt-20">TOP 100 UNIVERSITAS
-                        TERBAIK DUNIA</p>
+                            TERBAIK DUNIA</p>
                         <p className="text-white text-2xl font-bold italic pt-20 pb-96">Sekarang giliran kamu!</p>
 
                     </div>
@@ -293,8 +294,9 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
 
-        
+
     );
 }
