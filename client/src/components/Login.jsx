@@ -74,53 +74,66 @@ export default function Login() {
     return (
         <>
             <div className="relative">
-                <img src="../src/assets/login_bg.png" className="w-full h-auto min-h-[600px] object-cover"></img>
-                <div className="absolute inset-0  min-h-[600px] bg-gradient-to-t from-blue to-transparent to-40%" />
+                <img src="../src/assets/login_bg.png" className="w-full h-auto min-h-[900px] object-cover"></img>
+                <div className="absolute inset-0  min-h-[900px] bg-gradient-to-t from-blue to-transparent to-40%" />
                 <img src="../src/assets/login_vector1.png" className="absolute left-0 bottom-1/3 h-1/2"></img>
                 <img src="../src/assets/login_vector2.png" className="absolute right-0 bottom-1/4 h-1/2"></img>
-                <div class="absolute inset-0 flex items-center justify-center z-10">
-                    <div class="w-full max-w-lg">
-                        <form class="flex flex-col bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4"
+                <div class="absolute inset-0 flex items-start justify-center pt-16 z-10">
+                    <div class="w-full max-w-2xl">
+                        <form class="flex flex-col bg-white shadow-xl rounded-2xl px-32 pt-10 mb-4"
                             onSubmit={onSubmit}
                         >
                             <h1 class="xl:text-3xl text-xl font-semibold text-black text-center">
-                                Buat akun sekarang!
+                                Selamat Datang Kembali!
                             </h1>
-                            <p class="text-black my-8 text-center font-light">
+                            <p class="text-black pt-6 pb-10 text-center font-base">
                                 Yuk, isi form di bawah ini untuk dapat mengakses fitur lengkap dan bimbingan terbaik dari Eduplore!
                             </p >
                             <div class="mb-4">
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" required
+                                <input class="shadow appearance-none border-2 rounded-xl w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline border-blue" id="email" type="email" placeholder="Email" required
 
                                     onChange={(e) => updateForm({ email: e.target.value })}
                                 />
 
                             </div>
-                            <div class="mb-4">
-                                <input class="shadow appearance-none border  rounded w-full py-2 px-3   leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Kata sandi" required
+                            <div class="mb-6">
+                                <input class="shadow appearance-none border-2  rounded-xl w-full py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="password" type="password" placeholder="Kata sandi" required
                                     onChange={(e) => updateForm({ password: e.target.value })}
                                 />
+                                <a className="text-blue font-semibold tracking-wide pl-2 text-sm" href="/create"> Lupa kata sandi?</a>
 
                             </div>
-                            <div className="mb-6 text-center text-orange font-bold">
+                            <div class="mb-6 flex items">
+                                <label class=" grow ">
+                                    <input class="mr-2 leading-tight size-4 ring-blue" type="checkbox"
+                                        checked={isChecked}
+                                        onChange={handleCheckboxChange}
+                                    />
+
+                                </label>
+                                <div>
+
+                                    <p>Ingat Saya</p>
+                                    <p className="text-xs">Jangan klik kolom ini jika perangkat kamu digunakan oleh orang lain.</p>
+                                </div>
+                            </div>
+                            <div className="mb-6 text-center text-red font-bold">
                                 {errorMessage}
                             </div>
-                            <div class="flex  justify-center mx-4">
-                                <button class="shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                                    Daftar
+                            <div class="flex  justify-center mx-4 mb-8">
+                                <button class="transition-all shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline hover:tracking-widest tracking-wider" type="submit">
+                                    Masuk
                                 </button>
 
                             </div>
-
-
-                            <p class="text-black mt-8 mb-2 text-center font-base">
+                            <hr class="h-px my-6 bg-blue border-1 -mx-16 "></hr>
+                            <p class="text-black mt-4 mb-1 text-center font-base">
                                 Pengguna baru?
                             </p >
                             <NavLink class="text-center font-semibold text-lg text-blue hover:text-blue-80" to="/signup">
-                                <p className="text-center font-semibold text-lg text-blue hover:text-blue-80">Klik disini untuk membuat akun!</p>
+                                <p className="text-center font-semibold text-lg text-blue hover:text-blue-80 mb-16">Klik disini untuk membuat akun!</p>
                             </NavLink>
 
-                            <button onClick={logout} className="text-black text-xl" type="button"> tes logout </button>
                         </form>
                         <p class="text-center text-gray-500 text-xs">
                             .
