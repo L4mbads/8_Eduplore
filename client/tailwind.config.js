@@ -9,8 +9,10 @@ export default {
       transparent: 'transparent',
       current: 'current',
       'black': '#1d1b1b',
-      "white": '#ffffff',
+      'white': '#ffffff',
+      'red': '#ff0000',
       'gray': '#eeeeee',
+      'red': '#ff0000',
       'blue': {
         DEFAULT: '#3460c1',
         100: '#3460c1',
