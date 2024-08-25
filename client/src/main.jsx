@@ -7,9 +7,13 @@ import {
 import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
+
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
+
+import Home from "./components/Home";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -35,9 +39,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+
         path: "/signup",
         element: <Signup />,
+
       },
+      
     ],
   },
   {
