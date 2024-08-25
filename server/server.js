@@ -3,7 +3,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user-routes.js";
 import authRoutes from "./routes/auth-routes.js";
-import setCorsHeader from "./utils/cors-header.js"
 
 const PORT = process.env.PORT || 5050;
 const app = express();
