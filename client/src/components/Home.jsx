@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useRef } from "react";
+import { useScroll } from "./ScrollContext";
+
 
 export default function Home() {
+    const { layananRef, beasiswaRef } = useScroll();
     return (
         <div>
             <div className="pt-20 px-16"> {/* Bagian Home */}
@@ -14,20 +18,24 @@ export default function Home() {
                     Nggak perlu bingung tentang persiapan beasiswa. <br/>Puluhan
                     mentor profesional siap menemani dan membimbing perjalananmu!<br/>
                     </p>
-                    <NavLink className="font-bold text-white bg-orange inline-flex items-center justify-center rounded-md mt-10 mb-16 py-2 px-4 shadow-xl " to="/create">
+                    <button className="font-bold text-white bg-orange inline-flex items-center justify-center rounded-md mt-10 mb-16 py-2 px-4 shadow-xl btn" onClick={() => {
+                        layananRef.current?.scrollIntoView({
+                            behavior: "smooth"
+                        })
+                    }}>
                         Persiapkan sekarang
 
-                    </NavLink>
+                    </button>
                     <img src="../src/assets/Vector 1.png" className="absolute top-10 right-0"></img>
                 </div>
             </div>
 
             <div className="pt-20 px-16"> {/* Daftar beasiswa */}
-                <div className="flex pb-10"> {/* Judul Beasiswa*/}
+                <div className="flex pb-10" id="beasiswa" ref={beasiswaRef}> {/* Judul Beasiswa*/}
                     <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9"></img>
                     <h2 className="font-bold inline-flex items-end pl-2 text-xl">Rekomendasi Beasiswa Untukmu </h2>
                 </div>
-                <div className="flex flex-row gap-8 overflow-x-auto"> {/* Daftar2 Beasiswa */}
+                <div className="flex flex-row gap-8 overflow-x-auto" > {/* Daftar2 Beasiswa */}
                     <div className="relative bg-white items-start rounded-xl w-fit"> {/* 1 */}
                         <div className="flex justify-between gap-x-16">
                             <div className="grid grid-cols-2 mx-2 my-2 gap-x-2 gap-y-1 text-black text-sm flex-auto w-64">
@@ -179,12 +187,12 @@ export default function Home() {
             </div>
             <div className="pt-20 px-16 relative"> {/* Layanan kami */}
                 <img src="../src/assets/Vector 3.png" className="absolute top-80 left-0 size-full"></img>
-                <div className="flex pb-10"> {/* Judul Layanan*/}
+                <div className="flex pb-10" id="layanan" ref={layananRef}> {/* Judul Layanan*/}
                     <img alt="Home" src="../src/assets/Layanan.png" className="size-9"></img>
                     <h2 className="font-bold inline-flex items-end pl-2 text-xl">Program Unggulan Kami </h2>
                 </div>
                 <div className="flex flex-row gap-4 overflow-x-auto"> {/* Daftar2 mentoring */}
-                    <div className="relative bg-white items-start rounded-xl w-full"> {/* 1 */}
+                    <NavLink className="relative bg-white items-start rounded-xl w-full" to=""> {/* 1 */}
                         <div className="flex gap-x-4 justify-between my-10">
                             <img src="../src/assets/Mentor1.png" className="ml-4"></img>
                             <div className="grid-cols-1">
@@ -199,8 +207,8 @@ export default function Home() {
                             </div>
                         </div>
                     
-                    </div>
-                    <div className="relative bg-white items-start rounded-xl w-full"> {/* 2 */}
+                    </NavLink>
+                    <NavLink className="relative bg-white items-start rounded-xl w-full"> {/* 2 */}
                         <div className="flex gap-x-4 justify-between my-10">
                             <img src="../src/assets/Mentor2.png" className="ml-4"></img>
                             <div className="grid-cols-1">
@@ -216,8 +224,8 @@ export default function Home() {
                             </div>
                         </div>
                     
-                    </div>
-                    <div className="relative bg-white items-start rounded-xl w-full"> {/* 3 */}
+                    </NavLink>
+                    <NavLink className="relative bg-white items-start rounded-xl w-full"> {/* 3 */}
                         <div className="flex gap-x-4 justify-between my-10">
                             <img src="../src/assets/Mentor3.png" className="ml-4"></img>
                             <div className="grid-cols-1">
@@ -231,7 +239,7 @@ export default function Home() {
                             </div>
                         </div>
                     
-                    </div>
+                    </NavLink>
                 </div>
                 
             </div>
