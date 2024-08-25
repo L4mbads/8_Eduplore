@@ -43,6 +43,7 @@ export default function Signup() {
             // if we are adding a new record we will POST to /record.
             response = await fetch("http://localhost:5050/user-management/users", {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },

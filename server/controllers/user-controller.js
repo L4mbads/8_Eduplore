@@ -2,6 +2,7 @@
 import bcrypt from "bcrypt";
 import { ObjectId } from "mongodb";
 import db from "../db/connection.js";
+import createSecretToken from "../utils/token.js";
 
 export const insertUser = async (req, res) => {
     try {
@@ -22,8 +23,12 @@ export const insertUser = async (req, res) => {
 
         let collection = await db.collection("users");
         let result = await collection.insertOne(newDocument);
-        res.status(203).send(result);
-
+        const token = createSecretToken(result.insertedId);
+        res.cookie("token", token, {
+            withCredentials: true,
+            httpOnly: false,
+        });
+        return res.status(203).send(result);
     } catch (err) {
         console.error(err);
         res.status(500).send("Error adding record");
