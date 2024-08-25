@@ -1,7 +1,34 @@
-# Eduplore
- Tugas Kelompok 8 SPARTA
+---
+# Kelompok 8 Milestone SPARTA HMIF 2023
+---
+## ~ Anggota Kelompok ~
+- Muhammad Zidni Alkindi *(Product Manager)*
+- Nicholas Zefanya Lamtyo N. *(Product Manager)*
+- Ghazy Ahmed M. U. *(Software Engineer)*
+- Muhammad Aulia Azka *(Software Engineer)*
+- Fachriza Ahmad Setiyono *(Software Engineer)*
+- I Made Wiweka Putra *(Software Engineer)*
+- Razi Rachman Widyadhana *(Data Science)*
+- Jacob Reinhard Marudut S. *(Data Science)*
+- Raditya Zaki Athaya *(Data Science)*
+- Rhio Bimo Prakoso S. *(Game Developer)*
+- Anggita Najmi Layali *(UI/UX)*
+---
+## ~ Deskripsi Aplikasi ~
+Eduplore adalah platform edutech inovatif yang mengkolaborasikan segala kebutuhan mahasiswa dalam kegiatan akademiknya. Platform ini berfokus pada bimbingan dan membantu persiapan pendaftaran beasiswa yang akan disesuaikan dengan beasiswa yang user butuhkan. Eduplore menyediakan layanan dan informasi dari setiap beasiswa yang tersedia di Indonesia dengan menawarkan tiga fitur utama
 
-## Cara set up
+### 1. SuperCamp
+Rangkaian kelas intensif dengan awardee beasiswa untuk mempersiapkan pendaftaran dari seleksi berkas hingga tahap interview
+
+### 2. SuperExclusive
+Mentoring eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang user butuhkan
+
+### 3. SuperBoost 
+- CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat
+- Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat
+- Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
+---
+## ~ Cara set up ~
 
 Buat file `/server/config.env` dan isi dengan URI Atlas dan port:
 ```
