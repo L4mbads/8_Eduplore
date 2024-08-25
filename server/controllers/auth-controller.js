@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 export const login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, rememberMe } = req.body;
         if (!email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
@@ -17,10 +17,13 @@ export const login = async (req, res, next) => {
             if (err) throw err;
 
             if (data) {
-                const token = createSecretToken(user._id);
+                const expiration = rememberMe ? 3 * 24 * 60 * 60 * 1000 : 15 * 60 * 1000;
+                const token = createSecretToken(user._id, expiration);
                 res.cookie("auth-token", token, {
                     withCredentials: true,
                     httpOnly: false,
+                    maxAge: expiration,
+
                 });
                 res.status(201).json({ message: "User logged in successfully", success: true });
                 next()

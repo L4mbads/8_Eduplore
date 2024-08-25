@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-let createSecretToken = (id) => {
+let createSecretToken = (id, expiration = 900000) => {
     return jwt.sign({ id }, process.env.TOKEN_KEY, {
-        expiresIn: 3 * 24 * 60 * 60,
+        expiresIn: expiration,
     });
 };
 

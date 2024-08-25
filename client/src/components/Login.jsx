@@ -5,11 +5,9 @@ export default function Login() {
     const [form, setForm] = useState({
         email: "",
         password: "",
+        rememberMe: false,
     });
-    const [isChecked, setIsChecked] = useState(false)
-    const [isNew, setIsNew] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-    const params = useParams();
     const navigate = useNavigate();
 
 
@@ -21,18 +19,10 @@ export default function Login() {
         });
     }
 
-    const handleCheckboxChange = (e) => {
-        setIsChecked(e.target.checked); // update state based on checkbox value
-    };
     async function onSubmit(e) {
         e.preventDefault();
         const person = { ...form };
         try {
-
-            if (!isChecked) {
-                //setErrorMessage("Anda belum menyetujui")
-                //return;
-            }
 
             let response;
             // if we are adding a new record we will POST to /record.
@@ -106,8 +96,9 @@ export default function Login() {
                             <div class="mb-6 flex items">
                                 <label class=" grow ">
                                     <input class="mr-2 leading-tight size-4 ring-blue" type="checkbox"
-                                        checked={isChecked}
-                                        onChange={handleCheckboxChange}
+                                        checked={form.rememberMe}
+
+                                        onChange={(e) => updateForm({ rememberMe: e.target.checked })}
                                     />
 
                                 </label>
