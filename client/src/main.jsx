@@ -7,7 +7,13 @@ import {
 import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
+
 import About from "./components/About";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import UserPage from "./components/UserPage";
+import Home from "./components/Home";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,17 +23,40 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RecordList />,
+        element: <Home />,
+      }
+    ],
+  },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
   {
-    path: "/edit/:id",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/edit/:id",
-        element: <Record />,
+
+        path: "/signup",
+        element: <Signup />,
+
+      },
+
+    ],
+  },
+  {
+    path: "/user/:id",
+    element: <App />,
+    children: [
+      {
+        path: "/user/:id",
+        element: <UserPage />,
       },
     ],
   },
