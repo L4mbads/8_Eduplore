@@ -4,7 +4,7 @@ Yang harus diganti untuk penggantian tipe email
 html_package    : .html files   = Bisa lihat di folder './html_template'
 index           : integer       = index yang akan berkolerasi dengan index 'type_of_email' yang nanti di print untuk subject emailnya
 recipient_email : string        = email address user yang ingin di-email
-recipientData   : json          = {username, kampus : string, calendar, month : value}
+recipientData   : json          = {username, kampus : string, month, dates (format: Day, Date Month Year) : value (string), calendar : value (class=calendar)}
 
 */
 
@@ -27,14 +27,15 @@ const type_of_email = [
     'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
 ];
 
-let recipient_email = 'rizacal.mamen@gmail.com'; // Recipient email
+let recipient_email = 'rizacal.mamen@gmail.com'; // Default value, for recipient's email
 let recipientData = {
-    username: 'L4mbads',
-    kampus: 'MIT (Mbandung Institute of Technology)',
-    calendar: null, // Default value, set to null if not needed
-    month: null, // Default value, set to null if not needed
-    year: null, // Default value, set to null if not needed
-    mentor: null, // Default value, set to null if not needed
+    username: 'L4mbads', // Default value, for recipient's username
+    kampus: 'MIT (Mbandung Institute of Technology)', // Default value, for recipient's campus name
+    calendar: null, // Default value
+    month: null, // Default value (string), set to null if want to kept it randomly generated
+    year: null, // Default value (string), set to null if want to kept it randomly generated
+    mentor: null, // Default value (string), set to null if want to kept it randomly generated
+    dates: null, // Default value (string) (format: Day, Date Month Year), set to null if want to kept it randomly generated
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -122,8 +123,8 @@ function generateMonthYear() {
 
     // Array of month names
     const months = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
     ];
     
     // Generate a random month index
@@ -133,6 +134,7 @@ function generateMonthYear() {
     return [month, year];
 }
 
+// Function to generate random mentor name
 function generateMentorName() {
     // Array of names
     const names = [
@@ -147,13 +149,32 @@ function generateMentorName() {
     return name;
 }
 
-// Conditionally include calendar data
-if (index === 1 || index === 2) {
+// Function to generate random day of the week
+function generateDayDate() {
+// Array of days of the week
+const days = [
+    'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+];
+// Generate a random day index
+const daysIndex = Math.floor(Math.random() * days.length);
+const day = months[daysIndex];
+
+const date = Math.random(1,28);
+
+return `${day}, ${date}`;
+}
+
+// Conditionally (automatically) include calendar data
+if (index === 1) {
     recipientData.calendar = generateCalendar();
     recipientData.month = generateMonthYear()[0];
     recipientData.year = generateMonthYear()[1];
+}
 
-    if (index==2) {recipientData.mentor = generateMentorName()};
+// Conditionally (automatically) include mentor names and dates
+if (index==2) {
+    recipientData.mentor = generateMentorName();
+    recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
 }
 
 const templatePath = path.join(__dirname, 'html_template', html_package);
@@ -187,6 +208,5 @@ transporter.sendMail(mailOptions, (error, info) => {
 
 /*
 To Do:
-1. Membuat Template HTML SuperBoost
-2. Connect Code dengan Back-end agar bisa ngirim email secara real
+1. Connect Code dengan Back-end agar bisa ngirim email secara real
 */
