@@ -1,4 +1,4 @@
-import db from "../db/connection.js";
+import { dbUser } from "../db/connection.js";
 import { ObjectId } from "mongodb";
 import jwt from "jsonwebtoken";
 
@@ -11,7 +11,7 @@ const userVerification = (req, res, next) => {
         if (err) {
             return res.status(400).json({ status: false })
         } else {
-            let collection = db.collection("users");
+            let collection = dbUser.collection("users");
             let query = { _id: new ObjectId(data.id) };
             const user = await collection.findOne(query);
             if (user) return res.status(200).json({ status: true, user: user.username })
