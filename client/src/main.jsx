@@ -14,6 +14,8 @@ import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
 import Home from "./components/Home";
 import SuperExclusive from "./components/SuperExclusive";
+import SuperCamp from "./components/SuperCamp";
+import SuperBoost from "./components/SuperBoost";
 
 import "./index.css";
 
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
       {
         path: "/superexclusive",
         element: <SuperExclusive />,
+      },
+      {
+        path: "/supercamp",
+        element: <SuperCamp />,
+      },
+      {
+        path: "/superboost",
+        element: <SuperBoost />,
       },
     ],
   },
