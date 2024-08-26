@@ -13,6 +13,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
 import Home from "./components/Home";
+import SuperExclusive from "./components/SuperExclusive";
 
 import "./index.css";
 
@@ -61,12 +62,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/create",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/create",
-        element: <Record />,
+        path: "/superexclusive",
+        element: <SuperExclusive />,
       },
     ],
   },

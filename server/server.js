@@ -15,7 +15,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
-app.use("/user-management/users", userRoutes);
+app.use("/user-management", userRoutes);
 app.use("/auth", authRoutes);
 // start the Express server
 app.listen(PORT, () => {

@@ -21,7 +21,7 @@ export const insertUser = async (req, res) => {
             password: hashedPassword,
         };
 
-        let collection = await db.collection("users");
+        let collection = await db.collection("mentees");
         let result = await collection.insertOne(newDocument);
         const token = createSecretToken(result.insertedId);
         res.cookie("auth-token", token, {
@@ -37,7 +37,7 @@ export const insertUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
 
-    let collection = await db.collection("users");
+    let collection = await db.collection("mentees");
     let query = {};
     if (req.query.email) {
         query = { email: req.query.email };
@@ -47,6 +47,15 @@ export const getUsers = async (req, res) => {
         return await collection.find({}).toArray();
     }
     let results = await collection.findOne(query);
+
+    if (!results) return res.status(404).json({ message: "Not found" });
+    res.send(results).status(200);
+}
+export const getMentors = async (req, res) => {
+
+    let collection = await db.collection("mentors");
+
+    let results = await collection.find({}).toArray();
 
     if (!results) return res.status(404).json({ message: "Not found" });
     res.send(results).status(200);

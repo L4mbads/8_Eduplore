@@ -8,7 +8,7 @@ export const login = async (req, res, next) => {
         if (!email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
-        let collection = await db.collection("users");
+        let collection = await db.collection("mentees");
         const user = await collection.findOne({ email });
         if (!user) {
             return res.status(400).json({ message: 'Incorrect password or email' });
