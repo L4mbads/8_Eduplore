@@ -51,3 +51,42 @@ export const getUsers = async (req, res) => {
     if (!results) return res.status(404).json({ message: "Not found" });
     res.send(results).status(200);
 }
+
+export const getUserById = async (req, res) => {
+    try {
+        let collection = await db.collection("users");
+        try {
+            let query = { _id: new ObjectId(req.params.id) };
+            let result = await collection.findOne(query);
+
+            if (!result) return res.send("User not found").status(404);
+            else return res.send(result).status(200);
+        } catch (error) {
+            return res.status(404).json({ message: "User not found" })
+        }
+
+    } catch (error) {
+        return res.status(500).json({ message: "Error getting user" })
+    }
+}
+
+export const editUser = async (req, res) => {
+    try {
+        const query = { _id: new ObjectId(req.params.id) };
+        const updates = {
+            $set: {
+                name: req.body.name,
+                phone: req.body.phone,
+                email: req.body.email,
+                username: req.body.username,
+            },
+        };
+
+        let collection = await db.collection("users");
+        let result = await collection.updateOne(query, updates);
+        res.send(result).status(200);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error updating user");
+    }
+}

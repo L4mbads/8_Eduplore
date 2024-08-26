@@ -14,7 +14,7 @@ const userVerification = (req, res, next) => {
             let collection = db.collection("users");
             let query = { _id: new ObjectId(data.id) };
             const user = await collection.findOne(query);
-            if (user) return res.status(200).json({ status: true, user: user.username })
+            if (user) return res.status(200).json({ status: true, id: user._id, message: "tes" });
             else return res.status(400).json({ status: false })
         }
     })
