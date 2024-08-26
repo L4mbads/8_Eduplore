@@ -3,10 +3,20 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import Beasiswa from "./Beasiswa.jsx";
 
-const tes = ['aku', 'adalah']
+const options = [
+    [
+        { label: 'Pilih tingkat', value: '' },
+        { label: 'S1', value: 'S1' },
+        { label: 'S2', value: 'S2' },
+    ],
+    [
+        { label: 'Pilih komponen', value: '' },
+        { label: 'Fully Funded', value: 'Fully Funded' },
+    ],
+];
 
 export default function Record() {
-    const [form, setForm] = useState({
+    const [query, setQuery] = useState({
         name: "",
         degree: "",
         place: "",
@@ -14,7 +24,7 @@ export default function Record() {
         component: "",
         date: null,
     });
-    const [isNew, setIsNew] = useState(true);
+    const [degree, setDegree] = useState("");
     const params = useParams();
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
@@ -25,12 +35,6 @@ export default function Record() {
         setTimeout(() => {
             setIsVisible(true);
         }, 100); // delay for transition to start
-    }, []);
-
-
-
-    // This method fetches the records from the database.
-    useEffect(() => {
         async function getBeasiswaList() {
             const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?name=${encodeURIComponent('')}`);
             if (!response.ok) {
@@ -43,24 +47,91 @@ export default function Record() {
         }
         getBeasiswaList();
         return;
-    }, [beasiswaList.length]);
+    }, [navigate]);
 
+
+
+
+    async function onSubmit(e) {
+        e.preventDefault();
+        const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?name=${encodeURIComponent(query.name)}&degree=${encodeURIComponent(query.degree)}`
+        );
+        if (!response.ok) {
+            const message = `An error occurred: ${response.statusText}`;
+            console.error(message);
+            return;
+        }
+        const records = await response.json();
+        setBeasiswaList(records);
+
+    }
+
+    // These methods will update the state properties.
+    function updateQuery(value) {
+        return setQuery((prev) => {
+            return { ...prev, ...value };
+        });
+    }
+
+    const Select = ({ value, options, onChange }) => {
+        return (
+            <select value={value} onChange={onChange} className="border border-blue border-2 rounded-xl py-2 mb-2 px-3 grow ">
+                {options.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                ))}
+            </select>
+        );
+    };
 
     // This following section will display the form that takes the input from the user.
     return (
-        <>
-            <h1 className={`transition duration-1000 ease-in-out py-20  text-center text-blue font-semibold tracking-wide text-4xl
+        <div className="relative">
+            <img src="../src/assets/Vector 3.png" className="absolute bottom-0 w-full" />
+            <div className="relative">
+                <h1 className={`transition duration-1000 ease-in-out py-20  text-center text-blue font-semibold tracking-wide text-4xl
             ${isVisible ? 'opacity-100' : 'opacity-0 -translate-y-10'
-                }`}>
-                Yuk, Cek Beragam Beasiswa yang Bisa Kamu Ikuti!
-            </h1>
+                    }`}>
+                    Yuk, Cek Beragam Beasiswa yang Bisa Kamu Ikuti!
+                </h1>
+                <div className="bg-gradient-to-b from-gray to-white shadow-xl w-full flex flex-col px-6 py-4">
+                    <div class="mb-2">
+                        <input class="shadow appearance-none border-2  rounded-xl w-full py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="name" placeholder="Cari nama beasiswa di sini..."
+                            onChange={(e) => updateQuery({ name: e.target.value })}
+                        />
 
-            <div className="flex gap-6 flex-wrap justify-center px-6 ">
-                {beasiswaList.map((beasiswa) => {
-                    return <Beasiswa data={beasiswa} />
-                })}
+                    </div>
+                    <div className="flex flex-wrap gap-4">
+
+                        <Select
+                            options={options[0]}
+                            value={query.degree}
+                            onChange={(e) => updateQuery({ degree: e.target.value })}
+                        />
+                        <Select
+                            options={options[1]}
+                            value={query.component}
+                            onChange={(e) => updateQuery({ component: e.target.value })}
+                        />
+                        <input class="shadow appearance-none border-2  rounded-xl grow py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="date" placeholder=""
+                        />
+                        <button className="transition-all shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 mb-2 rounded-xl focus:outline-none focus:shadow-outline hover:tracking-widest tracking-wider" type="button" onClick={onSubmit}>
+                            Cari!
+                        </button>
+
+
+
+
+                    </div>
+                </div>
+
+                <div className="flex gap-6 flex-wrap justify-center px-6 z-20">
+                    {beasiswaList.map((beasiswa) => {
+                        return <Beasiswa data={beasiswa} /> //to implement page, use slice((PAGE-1) * amount, PAGE * amount)
+                    })}
+
+                </div>
 
             </div>
-        </>
+        </div>
     );
 }

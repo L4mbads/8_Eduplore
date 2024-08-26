@@ -1,3 +1,5 @@
+import React from "react";
+
 const Beasiswa = (props) => {
     return (
         <div className="bg-white rounded-xl shadow-lg flex flex-col p-6 my-8 min-w-36 w-full md:max-w-md">
