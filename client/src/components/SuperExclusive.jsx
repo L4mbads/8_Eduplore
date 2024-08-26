@@ -41,18 +41,18 @@ export default function SuperExclusive() {
     }
 
     return (
-        <div className="relative flex flex-col w-full items-start bg-gradient-to-b from-blue to-transparent from-30% to-65% min-h-screen">
+        <div className="relative flex flex-col w-full items-start bg-gradient-to-b from-blue to-transparent from-30% to-65% min-h-screen pb-16">
             <img src="../src/assets/super_bg.svg" className="absolute right-0 -top-24 object-none z-0" />
             <div className="flex flex-row items-center px-16 py-10 ">
                 <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4" />
                 <button className="transition-all text-white font-semibold tracking-wide hover:translate-x-2 hover:scale-125" type="button" onClick={() => (navigate(-1))}>Kembali</button>
             </div>
-            <div className="flex flex-col w-full justify-center md:justify-start items-center md:items-start px-40 mb-24 ">
+            <div className="flex flex-col w-full justify-center md:justify-start items-center md:items-start px-40 mb-16 ">
                 <h1 className=" text-white font-bold tracking-wide text-5xl ">
-                    SUPER-EXCLUSIVE{mentorIndex}
+                    SUPER-EXCLUSIVE
                 </h1>
-                <h3 className="text-green">
-                    Rating
+                <h3 className="bg-green text-black font-semibold mt-4 px-2 py-1 rounded-xl">
+                    Rating: 4.7
                 </h3>
             </div>
             <div className="flex flex-col gap-y-12 w-full md:px-36 px-2 z-10">
@@ -83,8 +83,15 @@ export default function SuperExclusive() {
                         <img src="../src/assets/arrow.svg" alt="" className="size-16 ml-8 grow self-center rotate-180" />
                     </div>
                 </div>
-                <input className="grow bg-white rounded-xl p-10 pr-36 shadow-lg" type="date">
-                </input>
+                <div className="grow bg-white rounded-xl p-10 shadow-lg">
+                    <h2 className="text-2xl font-bold">
+                        PILIH BATCH
+                    </h2>
+
+                </div>
+                <button className="transition grow bg-orange rounded-xl p-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110">
+                    DAFTAR
+                </button>
             </div>
         </div>
     );
