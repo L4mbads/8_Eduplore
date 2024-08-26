@@ -87,14 +87,13 @@ export default function Record() {
     return (
         <div className="relative">
             <img src="../src/assets/Vector 3.png" className="absolute bottom-0 w-full" />
-            <div className="relative">
-                <h1 className={`transition duration-1000 ease-in-out py-20  text-center text-blue font-semibold tracking-wide text-4xl
-            ${isVisible ? 'opacity-100' : 'opacity-0 -translate-y-10'
-                    }`}>
+            <div className="relative flex flex-col items-center">
+                <h1 className={`transition duration-1000 ease-in-out py-16 w-full bg-white select-none text-center text-blue font-semibold tracking-wide text-4xl
+            ${isVisible ? 'opacity-100' : 'opacity-0 -translate-y-10'}`}>
                     Yuk, Cek Beragam Beasiswa yang Bisa Kamu Ikuti!
                 </h1>
-                <div className="bg-gradient-to-b from-gray to-white shadow-xl w-full flex flex-col px-6 py-4">
-                    <div class="mb-2">
+                <div className="bg-white shadow-xl w-full flex flex-col px-6 sticky top-20 z-[10000]">
+                    <div class="">
                         <input class="shadow appearance-none border-2  rounded-xl w-full py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="name" placeholder="Cari nama beasiswa di sini..."
                             onChange={(e) => updateQuery({ name: e.target.value })}
                         />
@@ -124,7 +123,7 @@ export default function Record() {
                     </div>
                 </div>
 
-                <div className="flex gap-6 flex-wrap justify-center px-6 z-20">
+                <div className="flex gap-6 flex-wrap px-6 py-16 z-20 justify-center items-center ">
                     {beasiswaList.map((beasiswa) => {
                         return <Beasiswa data={beasiswa} /> //to implement page, use slice((PAGE-1) * amount, PAGE * amount)
                     })}
