@@ -37,7 +37,7 @@ export const insertUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
 
-    let collection = await db.collection("users");
+    let collection = await db.collection("regular");
     let query = {};
     if (req.query.email) {
         query = { email: req.query.email };
@@ -54,7 +54,7 @@ export const getUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
     try {
-        let collection = await db.collection("users");
+        let collection = await db.collection("regular");
         try {
             let query = { _id: new ObjectId(req.params.id) };
             let result = await collection.findOne(query);
@@ -82,7 +82,7 @@ export const editUser = async (req, res) => {
             },
         };
 
-        let collection = await db.collection("users");
+        let collection = await db.collection("regular");
         let result = await collection.updateOne(query, updates);
         res.send(result).status(200);
     } catch (err) {
