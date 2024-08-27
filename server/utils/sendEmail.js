@@ -12,9 +12,17 @@ import fs from 'fs';
 import path from 'path';
 import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables
 
 
-
+const type_of_html = [
+    'SignUp.html',
+    'SuperCamp.html',
+    'SuperExclusive.html',
+    'SuperBoost.html',
+]
 // 0 (signup), 1 (supercamp), 2 (superexclusive), 3 (superboost)
 const type_of_email = [
     'terimakasih telah mendaftar dengan kami!', // Sign-Up
@@ -23,24 +31,10 @@ const type_of_email = [
     'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
 ];
 
-const type_of_html = [
-    'SignUp.html',
-    'SuperCamp.html',
-    'SuperExclusive.html',
-    'SuperBoost.html',
-]
-const days = [
-    'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-];
-// Days of the week header
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const months = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-];
+
 let recipientData = {
-    email: '', // Default value, for recipient's eamil
     name: '', // Default value, for recipient's username
+    email: '', // Default value, for recipient's email
     kampus: 'MIT (Mbandung Institute of Technology)', // Default value, for recipient's campus name
     calendar: null, // Default value
     month: null, // Default value (string), set to null if want to kept it randomly generated
@@ -82,7 +76,8 @@ function generateCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-
+    // Days of the week header
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let calendarHtml = '<table border="1" style="border-collapse: collapse; width: 100%;">';
 
     // Table header
@@ -132,7 +127,10 @@ function generateMonthYear() {
     const year = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
 
     // Array of month names
-
+    const months = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
 
     // Generate a random month index
     const monthIndex = Math.floor(Math.random() * months.length);
@@ -141,25 +139,18 @@ function generateMonthYear() {
     return [month, year];
 }
 
-// Function to generate random mentor name
-function generateMentorName() {
-    // Array of names
-    const names = [
-        'Aulia Rahmayanti', 'Bintang Saputra', 'Cakra Kawala', 'Dewi Murtisari', 'Eka Gunawan', 'Farhan Erza', 'Gita Cantika', 'Hadi Hanun', 'Ika Fadilah', 'Jaya Wirakarsa', 'Xena Denphilim',
-        'Kamil Ridwan', 'Laila Prisicilla', 'Mira Nda', 'Nanda Kertasari', 'Oki Oktaviana', 'Putra Lim', 'Rani Rahmayanti', 'Sari Roti', 'M Tariq Noor F', 'Ulfa Emanuel', 'Vira Cantika', 'Yuda Bastian',
-        'Zain Maher', 'Wira Swasta'
-    ];
-
-    const namesIndex = Math.floor(Math.random() * names.length);
-    const name = names[namesIndex];
-
-    return name;
-}
 
 // Function to generate random day of the week
 function generateDayDate() {
     // Array of days of the week
-
+    const days = [
+        'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+    ];
+    // Array of month names
+    const months = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
     // Generate a random day index
     const daysIndex = Math.floor(Math.random() * days.length);
     const day = months[daysIndex];
@@ -169,12 +160,11 @@ function generateDayDate() {
     return `${day}, ${date}`;
 }
 
-
-
 const sendEmail = async (req, res) => {
     const index = await req.body.index;
-    recipientData = { ...recipientData, ...req.body }
-    console.log(req.body)
+    recipientData.name = req.body.name;
+    recipientData.email = req.body.email;
+    console.log(req.body);
     console.log(recipientData);
     // Conditionally (automatically) include calendar data
     if (index === 1) {
@@ -185,7 +175,7 @@ const sendEmail = async (req, res) => {
 
     // Conditionally (automatically) include mentor names and dates
     if (index == 2) {
-        recipientData.mentor = generateMentorName();
+        recipientData.mentor = req.body.mentor;
         recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
     }
     const templatePath = path.join(__dirname, 'html_template', type_of_html[index]);
