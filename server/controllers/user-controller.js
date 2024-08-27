@@ -1,9 +1,8 @@
 
 import bcrypt from "bcrypt";
 import { ObjectId } from "mongodb";
-import db from "../db/connection.js";
+import { dbUser } from "../db/connection.js";
 import createSecretToken from "../utils/token.js";
-
 export const insertUser = async (req, res) => {
     try {
         const response = await fetch(`http://localhost:5050/user-management/users?email=${req.body.email}`);
@@ -21,7 +20,7 @@ export const insertUser = async (req, res) => {
             password: hashedPassword,
         };
 
-        let collection = await db.collection("users");
+        let collection = await dbUser.collection("users");
         let result = await collection.insertOne(newDocument);
         const token = createSecretToken(result.insertedId);
         res.cookie("auth-token", token, {
@@ -37,7 +36,9 @@ export const insertUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
 
+
     let collection = await db.collection("regular");
+
     let query = {};
     if (req.query.email) {
         query = { email: req.query.email };

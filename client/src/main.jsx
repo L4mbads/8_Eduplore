@@ -12,6 +12,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
+import BeasiswaPage from "./components/BeasiswaPage";
 import Home from "./components/Home";
 
 import "./index.css";
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
 
         path: "/signup",
         element: <Signup />,
+
+      },
+      {
+
+        path: "/beasiswa",
+        element: <BeasiswaPage />,
 
       },
 
