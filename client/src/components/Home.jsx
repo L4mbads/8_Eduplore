@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useRef } from "react";
 import { useScroll } from "./ScrollContext";
+import Footer from "./Footer";
 
 
 export default function Home() {
@@ -15,8 +16,8 @@ export default function Home() {
                 <div className="relative container mx-auto bg-blue items-start pl-10 pr-48 rounded-xl bg-gradient-to-r from-blue to-blue-40 shadow-lg"> {/* Home */}
                     <p className="font-bold text-white text-5xl pt-10">Informasi dan Bimbingan Beasiswa Terlengkap!</p>
                     <p className="font-bold text-white pt-6 text-xl italic">
-                    Nggak perlu bingung tentang persiapan beasiswa. <br/>Puluhan
-                    mentor profesional siap menemani dan membimbing perjalananmu!<br/>
+                        Nggak perlu bingung tentang persiapan beasiswa. <br />Puluhan
+                        mentor profesional siap menemani dan membimbing perjalananmu!<br />
                     </p>
                     <button className="font-bold text-white bg-orange inline-flex items-center justify-center rounded-md mt-10 mb-16 py-2 px-4 shadow-xl btn" onClick={() => {
                         layananRef.current?.scrollIntoView({
@@ -35,8 +36,8 @@ export default function Home() {
                     <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9"></img>
                     <h2 className="font-bold inline-flex items-end pl-2 text-xl">Rekomendasi Beasiswa Untukmu </h2>
                 </div>
-                
             </div>
+
             <div className="pt-20 px-16 relative"> {/* Layanan kami */}
                 <img src="../src/assets/Vector 3.png" className="absolute top-80 left-0 size-full"></img>
                 <div className="flex pb-10" id="layanan" ref={layananRef}> {/* Judul Layanan*/}
@@ -51,6 +52,7 @@ export default function Home() {
                                 <h3 className="font-bold text-xl">SUPERCAMP</h3>
                                 <div className="mt-2">
                                     <p>Ikuti kelas intensif bersama para awardee selama rangkaian persiapan. 
+
                                     </p>
                                 </div>
                                 <p className="font-bold pt-10">70K/sesi</p>
@@ -59,9 +61,10 @@ export default function Home() {
                                 </NavLink>
                             </div>
                         </div>
-                    
+
                     </div>
                     <div className="relative bg-white items-start rounded-xl w-full"> {/* 2 */}
+
                         <div className="flex gap-x-4 justify-between my-10">
                             <img src="../src/assets/Mentor2.png" className="ml-4"></img>
                             <div className="grid-cols-1">
@@ -76,10 +79,10 @@ export default function Home() {
                                     Selengkapnya
                                 </NavLink>
                             </div>
-                        </div>
-                    
+                        </div>  
                     </div>
                     <div className="relative bg-white items-start rounded-xl w-full"> {/* 3 */}
+
                         <div className="flex gap-x-4 justify-between my-10">
                             <img src="../src/assets/Mentor3.png" className="ml-4"></img>
                             <div className="grid-cols-1">
@@ -93,10 +96,11 @@ export default function Home() {
                                 </NavLink>
                             </div>
                         </div>
-                    
+  
                     </div>
+
                 </div>
-                
+
             </div>
 
             <div className="pt-64 px-16"> {/* Judul Mengapa Eduplore */}
@@ -129,10 +133,10 @@ export default function Home() {
                 <img src="../src/assets/Vector 2.png" className="absolute bottom-20 left-0 size-max"></img>
                 <div className="grid grid-cols-2 ml-10 gap-x-20">
                     <div>
-                        <p className="text-blue text-xl font-bold">RIBUAN orang telah meraih 
-                        beasiswa impiannya di</p>
+                        <p className="text-blue text-xl font-bold">RIBUAN orang telah meraih
+                            beasiswa impiannya di</p>
                         <p className="text-blue text-3xl font-bold ml-10 pt-20">TOP 100 UNIVERSITAS
-                        TERBAIK DUNIA</p>
+                            TERBAIK DUNIA</p>
                         <p className="text-white text-2xl font-bold italic pt-20 pb-96">Sekarang giliran kamu!</p>
 
                     </div>
@@ -144,8 +148,9 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
 
-        
+
     );
 }
