@@ -90,4 +90,15 @@ export const editUser = async (req, res) => {
         console.error(err);
         res.status(500).send("Error updating user");
     }
+
+}
+export const getMentors = async (req, res) => {
+
+    let collection = await db.collection("mentors");
+
+    let results = await collection.find({}).toArray();
+
+    if (!results) return res.status(404).json({ message: "Not found" });
+    res.send(results).status(200);
+
 }

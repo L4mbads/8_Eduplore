@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
     const [form, setForm] = useState({
@@ -11,9 +11,8 @@ export default function Signup() {
         password: "",
     });
     const [isChecked, setIsChecked] = useState(false)
-    const [isNew, setIsNew] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-    const params = useParams();
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate();
 
 
@@ -32,6 +31,8 @@ export default function Signup() {
     async function onSubmit(e) {
         e.preventDefault();
         const person = { ...form };
+        setIsLoading(true)
+        setErrorMessage("")
         try {
 
             if (!isChecked) {
@@ -41,7 +42,7 @@ export default function Signup() {
 
             let response;
             // if we are adding a new record we will POST to /record.
-            response = await fetch("http://localhost:5050/user-management/users", {
+            response = await fetch("http://localhost:5050/user-management/user", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -55,15 +56,29 @@ export default function Signup() {
                 const log = await response.json();
                 setErrorMessage(log.message);
                 //throw new Error(`HTTP error! status: ${response.status}`);
-            } else {
-
-                navigate("/login");
             }
+            const request = await fetch("http://localhost:5050/email-sender/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(person),
+            });
+
+            if (!request.ok) {
+                setErrorMessage("Maaf terjadi kesalahan. Ulangi beberapa saat lagi.")
+                return
+            }
+
+
+
+            navigate('/')
 
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
+        } finally {
+            setIsLoading(false)
         }
-
 
     }
     return (
@@ -131,7 +146,7 @@ export default function Signup() {
                                 />
 
                             </div>
-                            <div className="mb-6 text-center text-orange font-bold">
+                            <div className="mb-6 text-center text-red font-bold">
                                 {errorMessage}
                             </div>
                             <div class="mb-6 flex">
@@ -148,6 +163,8 @@ export default function Signup() {
                             <div class="flex  justify-center mx-4">
                                 <button class="transition-all shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline hover:tracking-widest tracking-wider" type="submit">
                                     Daftar
+
+                                    <div className={`inline-block ${isLoading ? '' : 'hidden'} size-3.5 mx-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white`} role="status" />
                                 </button>
 
                             </div>

@@ -42,7 +42,7 @@ export default function Login() {
                 //throw new Error(`HTTP error! status: ${response.status}`);
             } else {
 
-                navigate("/login");
+                navigate(-1);
             }
 
         } catch (error) {

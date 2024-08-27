@@ -14,6 +14,10 @@ import Signup from "./components/Signup";
 import UserPage from "./components/UserPage";
 import BeasiswaPage from "./components/BeasiswaPage";
 import Home from "./components/Home";
+import SuperExclusive from "./components/SuperExclusive";
+import SuperCamp from "./components/SuperCamp";
+import SuperBoost from "./components/SuperBoost";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 import "./index.css";
 
@@ -68,12 +72,24 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/create",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/create",
-        element: <Record />,
+        path: "/superexclusive",
+        element: <SuperExclusive />,
+      },
+      {
+        path: "/supercamp",
+        element: <SuperCamp />,
+      },
+      {
+        path: "/superboost",
+        element: <SuperBoost />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentSuccess />,
       },
     ],
   },
