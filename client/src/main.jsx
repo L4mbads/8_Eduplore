@@ -16,6 +16,7 @@ import Home from "./components/Home";
 import SuperExclusive from "./components/SuperExclusive";
 import SuperCamp from "./components/SuperCamp";
 import SuperBoost from "./components/SuperBoost";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 import "./index.css";
 
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "/superboost",
         element: <SuperBoost />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentSuccess />,
       },
     ],
   },

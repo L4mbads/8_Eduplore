@@ -25,6 +25,8 @@ export default function SuperCamp() {
         index: 1
     });
     const [mentorList, setMentorList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     useEffect(() => {
         async function getMentorList() {
@@ -53,63 +55,77 @@ export default function SuperCamp() {
 
     async function onDaftar(e) {
         e.preventDefault();
-
-
-
-        const authorized = await fetch(`http://localhost:5050/auth/`, {
-            method: "GET",
-            credentials: "include",
-        });
-        if (!authorized.ok) {
-            navigate("/login");
-            return;
-        }
-
-
-        const user = await authorized.json();
-
-        const response = await fetch(`http://localhost:5050/user-management/user/${user.id.toString()}`, {
-            method: "GET",
-            credentials: "include",
-        });
-        if (!response.ok) {
-            return;
-        }
-
-        const userData = await response.json();
-        packet.name = await userData.name;
-        packet.email = await userData.email;
+        setIsLoading(true)
         try {
+            if (!packet.beasiswa || packet.batch == 0) {
+                setErrorMessage("Pastikan sudah memilih beasiswa dan batch!")
+                return
+            }
 
-            const person = { ...packet }
-            let response;
+            const authorized = await fetch(`http://localhost:5050/auth/`, {
+                method: "GET",
+                credentials: "include",
+            });
+            if (!authorized.ok) {
+                navigate("/login");
+                return;
+            }
+
+
+            const user = await authorized.json();
+
+            const response = await fetch(`http://localhost:5050/user-management/user/${user.id.toString()}`, {
+                method: "GET",
+                credentials: "include",
+            });
+            if (!response.ok) {
+                return;
+            }
+
+            const userData = await response.json();
+            packet.name = await userData.name;
+            packet.email = await userData.email;
+
+
+            const req = { ...packet }
+
             // if we are adding a new record we will POST to /record.
-            response = await fetch("http://localhost:5050/email-sender/", {
+            const request = await fetch("http://localhost:5050/email-sender/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(person),
+                body: JSON.stringify(req),
             });
+
+            if (!request.ok) {
+                setErrorMessage("Maaf terjadi kesalahan. Ulangi beberapa saat lagi.")
+                return
+            }
+
 
 
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
+        } finally {
+            setIsLoading(false)
+            navigate('/payment')
         }
 
 
     }
     const Select = ({ value, options, onChange }) => {
         return (
-            <select value={value} onChange={onChange} className="mb-2 pr-3 w-full text-2xl font-bold focus:ring-0 focus:ring-offset-0">
-                {options.map((option) => (
-                    <option value={option.value} className={`text-2xl font-bold ${option.value != '' ? 'text-blue' : ''}`}>{option.label}</option>
-                ))}
-            </select>
+            <select value={value} onChange={onChange} className={`mb-2 pr-3 w-full text-2xl font-bold focus:ring-0 focus:ring-offset-0
+                ${value != options[0].value ? 'text-blue' : 'text-black'}`}
+            >
+                {
+                    options.map((option) => (
+                        <option value={option.value} className={`text-2xl font-bold ${option.value != '' ? 'text-blue' : ''}`}>{option.label}</option>
+                    ))
+                }
+            </select >
         );
-    };
-    const handleRadioChange = (e) => {
-        updatePacket({ beasiswa: e.target.value });
     };
 
     return (
@@ -152,10 +168,15 @@ export default function SuperCamp() {
                         onChange={(e) => updatePacket({ batch: e.target.value })}
                     />
                 </div>
+                <h3 className="text-center text-xl font-bold text-red">
+                    {errorMessage}
+                </h3>
                 <button className="transition grow bg-orange rounded-xl p-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
                     onClick={onDaftar}
                 >
                     DAFTAR
+                    <div className={`inline-block ${isLoading ? '' : 'hidden'} h-8 w-8 mx-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white`} role="status" />
+
                 </button>
             </div>
         </div>
