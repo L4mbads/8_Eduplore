@@ -161,7 +161,8 @@ function generateDayDate() {
 }
 
 const sendEmail = async (req, res) => {
-    const index = await req.body.index;
+    const index = req.body.index || 0;
+    console.log(index)
     recipientData.name = req.body.name;
     recipientData.email = req.body.email;
     console.log(req.body);
