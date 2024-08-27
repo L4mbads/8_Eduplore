@@ -22,6 +22,6 @@ try {
 }
 
 
-export let dbUser = client.db("employees");
+export let dbUser = client.db("users");
 export let dbProgram = client.db("program");
 

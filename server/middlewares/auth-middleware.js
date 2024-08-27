@@ -12,7 +12,7 @@ const userVerification = (req, res, next) => {
             return res.status(400).json({ status: false })
         } else {
 
-            let collection = db.collection("regular");
+            let collection = dbUser.collection("regular");
             let query = { _id: new ObjectId(data.id) };
             const user = await collection.findOne(query);
             if (user) return res.status(200).json({ status: true, id: user._id })

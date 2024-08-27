@@ -9,7 +9,7 @@ export const login = async (req, res, next) => {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        let collection = await db.collection("regular");
+        let collection = await dbUser.collection("regular");
 
         const user = await collection.findOne({ email });
         if (!user) {

@@ -20,7 +20,7 @@ export const insertUser = async (req, res) => {
             password: hashedPassword,
         };
 
-        let collection = await dbUser.collection("users");
+        let collection = await dbUser.collection("regular");
         let result = await collection.insertOne(newDocument);
         const token = createSecretToken(result.insertedId);
         res.cookie("auth-token", token, {
@@ -37,7 +37,7 @@ export const insertUser = async (req, res) => {
 export const getUsers = async (req, res) => {
 
 
-    let collection = await db.collection("regular");
+    let collection = await dbUser.collection("regular");
 
     let query = {};
     if (req.query.email) {
@@ -55,7 +55,7 @@ export const getUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
     try {
-        let collection = await db.collection("regular");
+        let collection = await dbUser.collection("regular");
         try {
             let query = { _id: new ObjectId(req.params.id) };
             let result = await collection.findOne(query);
@@ -83,7 +83,7 @@ export const editUser = async (req, res) => {
             },
         };
 
-        let collection = await db.collection("regular");
+        let collection = await dbUser.collection("regular");
         let result = await collection.updateOne(query, updates);
         res.send(result).status(200);
     } catch (err) {
@@ -94,7 +94,7 @@ export const editUser = async (req, res) => {
 }
 export const getMentors = async (req, res) => {
 
-    let collection = await db.collection("mentors");
+    let collection = await dbUser.collection("mentors");
 
     let results = await collection.find({}).toArray();
 
