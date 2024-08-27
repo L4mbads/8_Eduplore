@@ -21,7 +21,24 @@ export default function SuperBoost() {
         getMentorList();
         return;
     }, [navigate]);
+    async function onDaftar(e) {
+        e.preventDefault();
+        //const person = { ...form };
+        try {
 
+            let response;
+            // if we are adding a new record we will POST to /record.
+            response = await fetch("http://localhost:5050/email-sender/", {
+                method: "POST",
+            });
+
+
+        } catch (error) {
+            console.error('A problem occurred with your fetch operation: ', error);
+        }
+
+
+    }
     const MentorCard = (props) => {
         return (
             <div className={`transition duration-300 flex flex-col focus:bg-black justify-start items-center shadow-lg rounded-lg p-4 flex-none min-w-60 hover:scale-110
@@ -89,7 +106,9 @@ export default function SuperBoost() {
                     </h2>
 
                 </div>
-                <button className="transition grow bg-orange rounded-xl p-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110">
+                <button className="transition grow bg-orange rounded-xl p-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                    onClick={onDaftar}
+                >
                     DAFTAR
                 </button>
             </div>

@@ -89,7 +89,7 @@ function generateCalendar() {
     for (let i = 0; i < firstDay; i++) {
         calendarHtml += '<td></td>';
     }
-    
+
     // Days of the month
     for (let day = 1; day <= daysInMonth; day++) {
         if (Math.random() < 0.3) { // 30% chance to circle a date
@@ -103,7 +103,7 @@ function generateCalendar() {
             calendarHtml += '</tr><tr>';
         }
     }
-    
+
     // Fill remaining cells for the last week if needed
     const remainingCells = 7 - ((daysInMonth + firstDay) % 7);
     for (let i = 0; i < remainingCells && remainingCells < 7; i++) {
@@ -126,11 +126,11 @@ function generateMonthYear() {
         'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
         'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
     ];
-    
+
     // Generate a random month index
     const monthIndex = Math.floor(Math.random() * months.length);
     const month = months[monthIndex];
-    
+
     return [month, year];
 }
 
@@ -138,9 +138,9 @@ function generateMonthYear() {
 function generateMentorName() {
     // Array of names
     const names = [
-        'Aulia Rahmayanti','Bintang Saputra','Cakra Kawala','Dewi Murtisari','Eka Gunawan','Farhan Erza','Gita Cantika','Hadi Hanun','Ika Fadilah','Jaya Wirakarsa','Xena Denphilim',
-        'Kamil Ridwan','Laila Prisicilla','Mira Nda','Nanda Kertasari','Oki Oktaviana','Putra Lim','Rani Rahmayanti','Sari Roti','M Tariq Noor F','Ulfa Emanuel','Vira Cantika','Yuda Bastian',
-        'Zain Maher','Wira Swasta'
+        'Aulia Rahmayanti', 'Bintang Saputra', 'Cakra Kawala', 'Dewi Murtisari', 'Eka Gunawan', 'Farhan Erza', 'Gita Cantika', 'Hadi Hanun', 'Ika Fadilah', 'Jaya Wirakarsa', 'Xena Denphilim',
+        'Kamil Ridwan', 'Laila Prisicilla', 'Mira Nda', 'Nanda Kertasari', 'Oki Oktaviana', 'Putra Lim', 'Rani Rahmayanti', 'Sari Roti', 'M Tariq Noor F', 'Ulfa Emanuel', 'Vira Cantika', 'Yuda Bastian',
+        'Zain Maher', 'Wira Swasta'
     ];
 
     const namesIndex = Math.floor(Math.random() * names.length);
@@ -151,17 +151,17 @@ function generateMentorName() {
 
 // Function to generate random day of the week
 function generateDayDate() {
-// Array of days of the week
-const days = [
-    'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-];
-// Generate a random day index
-const daysIndex = Math.floor(Math.random() * days.length);
-const day = months[daysIndex];
+    // Array of days of the week
+    const days = [
+        'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+    ];
+    // Generate a random day index
+    const daysIndex = Math.floor(Math.random() * days.length);
+    const day = months[daysIndex];
 
-const date = Math.random(1,28);
+    const date = Math.random(1, 28);
 
-return `${day}, ${date}`;
+    return `${day}, ${date}`;
 }
 
 // Conditionally (automatically) include calendar data
@@ -172,39 +172,42 @@ if (index === 1) {
 }
 
 // Conditionally (automatically) include mentor names and dates
-if (index==2) {
+if (index == 2) {
     recipientData.mentor = generateMentorName();
     recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
 }
 
-const templatePath = path.join(__dirname, 'html_template', html_package);
-console.log(`Loading template from: ${templatePath}`);
-const customizedHtml = loadTemplate(templatePath, recipientData);
+function sendEmail() {
+    const templatePath = path.join(__dirname, 'html_template', html_package);
+    console.log(`Loading template from: ${templatePath}`);
+    const customizedHtml = loadTemplate(templatePath, recipientData);
 
-// Configure the transporter
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER, // Email address from .env file
-        pass: process.env.EMAIL_PASS, // App password from .env file
-    },
-});
+    // Configure the transporter
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER, // Email address from .env file
+            pass: process.env.EMAIL_PASS, // App password from .env file
+        },
+    });
 
-// Mail Options
-let mailOptions = {
-    from: process.env.EMAIL_USER, // Sender address
-    to: recipient_email,
-    subject: `Halo ${recipientData.username}, ${type_of_email[index]}`,
-    html: customizedHtml,
-};
+    // Mail Options
+    let mailOptions = {
+        from: process.env.EMAIL_USER, // Sender address
+        to: recipient_email,
+        subject: `Halo ${recipientData.username}, ${type_of_email[index]}`,
+        html: customizedHtml,
+    };
 
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.error('Error sending email:', error);
-    }
-    console.log('Email sent: ' + info.response);
-});
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.error('Error sending email:', error);
+        }
+        console.log('Email sent: ' + info.response);
+    });
+}
 
+export default sendEmail;
 
 /*
 To Do:
