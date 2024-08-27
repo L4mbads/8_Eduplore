@@ -29,8 +29,15 @@ const type_of_html = [
     'SuperExclusive.html',
     'SuperBoost.html',
 ]
-
-
+const days = [
+    'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+];
+// Days of the week header
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const months = [
+    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+];
 let recipientData = {
     email: '', // Default value, for recipient's eamil
     name: '', // Default value, for recipient's username
@@ -75,8 +82,7 @@ function generateCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Days of the week header
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     let calendarHtml = '<table border="1" style="border-collapse: collapse; width: 100%;">';
 
     // Table header
@@ -126,10 +132,7 @@ function generateMonthYear() {
     const year = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
 
     // Array of month names
-    const months = [
-        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    ];
+
 
     // Generate a random month index
     const monthIndex = Math.floor(Math.random() * months.length);
@@ -156,9 +159,7 @@ function generateMentorName() {
 // Function to generate random day of the week
 function generateDayDate() {
     // Array of days of the week
-    const days = [
-        'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-    ];
+
     // Generate a random day index
     const daysIndex = Math.floor(Math.random() * days.length);
     const day = months[daysIndex];
@@ -170,7 +171,11 @@ function generateDayDate() {
 
 
 
-function sendEmail(userData, index) {
+const sendEmail = async (req, res) => {
+    const index = await req.body.index;
+    recipientData = { ...recipientData, ...req.body }
+    console.log(req.body)
+    console.log(recipientData);
     // Conditionally (automatically) include calendar data
     if (index === 1) {
         recipientData.calendar = generateCalendar();
