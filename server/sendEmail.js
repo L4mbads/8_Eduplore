@@ -4,7 +4,7 @@ Yang harus diganti untuk penggantian tipe email
 html_package    : .html files   = Bisa lihat di folder './html_template'
 index           : integer       = index yang akan berkolerasi dengan index 'type_of_email' yang nanti di print untuk subject emailnya
 recipient_email : string        = email address user yang ingin di-email
-recipientData   : json          = {username, kampus : string, month, dates (format: Day, Date Month Year) : value (string), calendar : value (class=calendar)}
+recipientData   : json          = {username, kampus : string, month, dates (format: Day, Date Month Year) : value (string), calendar : value (class=calendar), boost_fill : bool}
 
 */
 
@@ -27,15 +27,17 @@ const type_of_email = [
     'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
 ];
 
-let recipient_email = 'rizacal.mamen@gmail.com'; // Default value, for recipient's email
+let recipient_email = 'rhiobimoprakoso.s@gmail.com'; // Default value, for recipient's email
 let recipientData = {
-    username: 'L4mbads', // Default value, for recipient's username
+    username: 'Rhio', // Default value, for recipient's username
     kampus: 'MIT (Mbandung Institute of Technology)', // Default value, for recipient's campus name
     calendar: null, // Default value
     month: null, // Default value (string), set to null if want to kept it randomly generated
     year: null, // Default value (string), set to null if want to kept it randomly generated
     mentor: null, // Default value (string), set to null if want to kept it randomly generated
     dates: null, // Default value (string) (format: Day, Date Month Year), set to null if want to kept it randomly generated
+    boostType: 0, // (index_integer) (CV_Boost [0], Esai_Boost [1], Interview_Boost [2])
+    Boost: null
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -116,8 +118,8 @@ function generateCalendar() {
 
 // Function to generate month and year
 function generateMonthYear() {
-    const startYear = 2024
-    const endYear = 2026
+    const startYear = 2024;
+    const endYear = 2026;
     // Generate a random year within the specified range
     const year = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
 
@@ -151,17 +153,28 @@ function generateMentorName() {
 
 // Function to generate random day of the week
 function generateDayDate() {
-// Array of days of the week
-const days = [
-    'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-];
-// Generate a random day index
-const daysIndex = Math.floor(Math.random() * days.length);
-const day = months[daysIndex];
+    // Array of days of the week
+    const days = [
+        'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+    ];
+    // Generate a random day index
+    const daysIndex = Math.floor(Math.random() * days.length);
+    const day = days[daysIndex];
 
-const date = Math.random(1,28);
+    const date = Math.floor(Math.random() * 28) + 1;
 
-return `${day}, ${date}`;
+    return `${day}, ${date}`;
+}
+
+function addHighlightElement(boostClass) {
+    // Create the new HTML element
+    const newElementHtml = `
+    <div class="highlight">
+        <h3>${boostClass}</h3>
+        <p>Ini sebenernya harus diisi, cuman harus conditional dan aku males :v.</p>
+    </div>
+`;
+    return newElementHtml;
 }
 
 // Conditionally (automatically) include calendar data
@@ -172,11 +185,22 @@ if (index === 1) {
 }
 
 // Conditionally (automatically) include mentor names and dates
-if (index==2) {
+if (index === 2) {
     recipientData.mentor = generateMentorName();
-    recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
+    recipientData.dates = generateDayDate() + ', ' + generateMonthYear()[0] + ' ' + generateMonthYear()[1];
 }
 
+// Conditionally (automatically) include highlight elements
+if (index === 3) {
+    const boostList = [
+        "CV Boost",
+        "Esai Boost",
+        "Interview Boost"
+    ];
+    recipientData.Boost = addHighlightElement(boostList[recipientData.boostType]);
+}
+
+// Load and customize the template
 const templatePath = path.join(__dirname, 'html_template', html_package);
 console.log(`Loading template from: ${templatePath}`);
 const customizedHtml = loadTemplate(templatePath, recipientData);
@@ -198,13 +222,13 @@ let mailOptions = {
     html: customizedHtml,
 };
 
+// Send email
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         return console.error('Error sending email:', error);
     }
     console.log('Email sent: ' + info.response);
 });
-
 
 /*
 To Do:
