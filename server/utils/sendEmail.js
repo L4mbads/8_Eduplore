@@ -12,12 +12,8 @@ import fs from 'fs';
 import path from 'path';
 import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables
 
-const html_package = 'SuperBoost.html'; // Default template file
-const index = 3; // Index for the subject line
 
 // 0 (signup), 1 (supercamp), 2 (superexclusive), 3 (superboost)
 const type_of_email = [
@@ -27,9 +23,17 @@ const type_of_email = [
     'terimakasih telah berlangganan dengan SuperBoost', // SuperBoost
 ];
 
-let recipient_email = 'rizacal.mamen@gmail.com'; // Default value, for recipient's email
+const type_of_html = [
+    'SignUp.html',
+    'SuperCamp.html',
+    'SuperExclusive.html',
+    'SuperBoost.html',
+]
+
+
 let recipientData = {
-    username: 'L4mbads', // Default value, for recipient's username
+    email: '', // Default value, for recipient's eamil
+    name: '', // Default value, for recipient's username
     kampus: 'MIT (Mbandung Institute of Technology)', // Default value, for recipient's campus name
     calendar: null, // Default value
     month: null, // Default value (string), set to null if want to kept it randomly generated
@@ -164,21 +168,22 @@ function generateDayDate() {
     return `${day}, ${date}`;
 }
 
-// Conditionally (automatically) include calendar data
-if (index === 1) {
-    recipientData.calendar = generateCalendar();
-    recipientData.month = generateMonthYear()[0];
-    recipientData.year = generateMonthYear()[1];
-}
 
-// Conditionally (automatically) include mentor names and dates
-if (index == 2) {
-    recipientData.mentor = generateMentorName();
-    recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
-}
 
-function sendEmail() {
-    const templatePath = path.join(__dirname, 'html_template', html_package);
+function sendEmail(userData, index) {
+    // Conditionally (automatically) include calendar data
+    if (index === 1) {
+        recipientData.calendar = generateCalendar();
+        recipientData.month = generateMonthYear()[0];
+        recipientData.year = generateMonthYear()[1];
+    }
+
+    // Conditionally (automatically) include mentor names and dates
+    if (index == 2) {
+        recipientData.mentor = generateMentorName();
+        recipientData.dates = generateDayDate() + generateMonthYear()[0] + generateMonthYear()[1];
+    }
+    const templatePath = path.join(__dirname, 'html_template', type_of_html[index]);
     console.log(`Loading template from: ${templatePath}`);
     const customizedHtml = loadTemplate(templatePath, recipientData);
 
@@ -194,8 +199,8 @@ function sendEmail() {
     // Mail Options
     let mailOptions = {
         from: process.env.EMAIL_USER, // Sender address
-        to: recipient_email,
-        subject: `Halo ${recipientData.username}, ${type_of_email[index]}`,
+        to: recipientData.email,
+        subject: `Halo ${recipientData.name}, ${type_of_email[index]}`,
         html: customizedHtml,
     };
 

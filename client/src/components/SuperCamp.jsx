@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 
 
-export default function SuperCamp() {
+export default function SuperExclusive() {
     const [mentorList, setMentorList] = useState([]);
     const [mentorIndex, setMentorIndex] = useState(-1);
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function SuperCamp() {
             </div>
             <div className="flex flex-col w-full justify-center md:justify-start items-center md:items-start px-40 mb-16 ">
                 <h1 className=" text-white font-bold tracking-wide text-5xl ">
-                    SUPERCAMP
+                    SUPER-EXCLUSIVE
                 </h1>
                 <h3 className="bg-green text-black font-semibold mt-4 px-2 py-1 rounded-xl">
                     Rating: 4.7
