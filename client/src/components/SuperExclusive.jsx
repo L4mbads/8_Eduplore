@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function SuperExclusive() {
-    const [form, setForm] = useState({
+    const [packet, setPacket] = useState({
         name: "",
         email: "",
         mentorId: "",
+        mentor: "",
         batch: "",
         index: 2
     });
     const [mentorList, setMentorList] = useState([]);
-    const [mentorIndex, setMentorIndex] = useState(-1);
     const navigate = useNavigate();
     useEffect(() => {
         async function getMentorList() {
-            const response = await fetch(`http://localhost:5050/user-management/mentors`);
+            const response = await fetch(`http://localhost:5050/user-management/mentor`);
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
                 console.error(message);
@@ -30,8 +30,8 @@ export default function SuperExclusive() {
     }, [navigate]);
 
     // These methods will update the state properties.
-    function updateForm(value) {
-        return setForm((prev) => {
+    function updatePacket(value) {
+        return setPacket((prev) => {
             return { ...prev, ...value };
         });
     }
@@ -53,7 +53,7 @@ export default function SuperExclusive() {
 
         const user = await authorized.json();
 
-        const response = await fetch(`http://localhost:5050/user-management/users/${user.id.toString()}`, {
+        const response = await fetch(`http://localhost:5050/user-management/user/${user.id.toString()}`, {
             method: "GET",
             credentials: "include",
         });
@@ -62,12 +62,11 @@ export default function SuperExclusive() {
         }
 
         const userData = await response.json();
-
-        setForm(userData)
-
-
+        packet.name = await userData.name;
+        packet.email = await userData.email;
         try {
 
+            const person = { ...packet }
             let response;
             // if we are adding a new record we will POST to /record.
             response = await fetch("http://localhost:5050/email-sender/", {
@@ -75,7 +74,7 @@ export default function SuperExclusive() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(form),
+                body: JSON.stringify(person),
             });
 
 
@@ -88,8 +87,8 @@ export default function SuperExclusive() {
     const MentorCard = (props) => {
         return (
             <div className={`transition duration-300 flex flex-col focus:bg-black justify-start items-center shadow-lg rounded-lg p-4 flex-none min-w-60 hover:scale-110
-        ${form.mentorId == props.data._id ? 'bg-green-60 scale-110' : 'bg-gray'}`}
-                onClick={() => updateForm({ mentorId: props.data._id })}
+        ${packet.mentorId == props.data._id ? 'bg-green-60 scale-110' : 'bg-gray'}`}
+                onClick={() => updatePacket({ mentorId: props.data._id, mentor: props.data.name })}
             >
                 <div className="self-start justify-center items-center flex flex-row mb-4">
                     <img src="../src/assets/eye.svg" alt="viewer" className="size-4 mr-1" />
