@@ -7,6 +7,7 @@ import bcrypt from "bcrypt";
 // This help convert the id from string to ObjectId for the _id.
 
 
+
 import { insertUser, getUsers, getUserById, editUser, getMentors } from "../controllers/user-controller.js";
 
 // router is an instance of the express router.
@@ -28,26 +29,10 @@ router.get("/user/:id", getUserById);
 router.patch("/user/:id", editUser);
 
 
-// This section will help you update a record by id.
-router.patch("/:id", async (req, res) => {
-    try {
-        const query = { _id: new ObjectId(req.params.id) };
-        const updates = {
-            $set: {
-                name: req.body.name,
-                position: req.body.position,
-                level: req.body.level,
-            },
-        };
+router.get("/:id", getUserById);
 
-        let collection = await db.collection("records");
-        let result = await collection.updateOne(query, updates);
-        res.send(result).status(200);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Error updating record");
-    }
-});
+// This section will help you update a record by id.
+router.patch("/:id", editUser);
 
 // This section will help you delete a record
 router.delete("/:id", async (req, res) => {
