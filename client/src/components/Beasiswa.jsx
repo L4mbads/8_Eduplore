@@ -15,7 +15,7 @@ const Beasiswa = (props) => {
                 </div>
             </div>
             <h2 className="font-bold text-3xl py-1">{props.data.name}</h2>
-            <p className="bg-gray rounded-full px-6 py-2 font-semibold text-green"><span className="font-medium text-black">Deadline:  </span>{new Date(props.data.date).toDateString()}</p>
+            <p className="bg-gray rounded-full px-6 py-2 font-semibold text-blue"><span className="font-medium text-black">Deadline:  </span>{new Date(props.data.date).toDateString()}</p>
 
             <div className="flex items-center justify-center mt-6 ">
                 <a className="transition ease-in-out bg-orange tracking-wide shadow-[0_7px_2px_-2px_rgba(0,0,0,0.3)] rounded-xl w-fit py-2 px-4 text-white font-semibold

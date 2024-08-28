@@ -22,10 +22,9 @@ export default function Record() {
         place: "",
         link: "",
         component: "",
-        date: null,
+        date: "",
     });
-    const [degree, setDegree] = useState("");
-    const params = useParams();
+
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [beasiswaList, setBeasiswaList] = useState([]);
@@ -54,7 +53,7 @@ export default function Record() {
 
     async function onSubmit(e) {
         e.preventDefault();
-        const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?name=${encodeURIComponent(query.name)}&degree=${encodeURIComponent(query.degree)}`
+        const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?name=${encodeURIComponent(query.name)}&degree=${encodeURIComponent(query.degree)}&date=${encodeURIComponent(query.date)}`
         );
         if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
@@ -122,6 +121,8 @@ export default function Record() {
                             onChange={(e) => updateQuery({ component: e.target.value })}
                         />
                         <input class="shadow appearance-none border-2  rounded-xl grow py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="date" placeholder=""
+
+                            onChange={(e) => updateQuery({ date: e.target.value })}
                         />
                         <button className="transition-all shadow grow bg-blue hover:bg-blue-80 text-white font-bold py-2 px-4 mb-2 rounded-xl focus:outline-none focus:shadow-outline hover:tracking-widest tracking-wider" type="button" onClick={onSubmit}>
                             Cari!
@@ -133,11 +134,13 @@ export default function Record() {
                     </div>
                 </div>
 
-                <div className="flex gap-6 flex-wrap px-6 py-16 z-20 w-full justify-center items-center ">
-                    {beasiswaList.map((beasiswa) => {
-                        return <Beasiswa data={beasiswa} /> //to implement page, use slice((PAGE-1) * amount, PAGE * amount)
-                    })}
+                <div className="">
+                    <div className="grid grid-cols-1  gap-4 items-start justify-center lg:grid-cols-2 2xl:grid-cols-3 py-8 z-20 min-h-screen w-full place-items-center">
+                        {beasiswaList.map((beasiswa) => {
+                            return <Beasiswa data={beasiswa} /> //to implement page, use slice((PAGE-1) * amount, PAGE * amount)
+                        })}
 
+                    </div>
                 </div>
                 {beasiswaList.length == 0 && <NoResult />}
 
