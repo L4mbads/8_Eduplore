@@ -164,7 +164,7 @@ export default function SuperBoost() {
                         <p className="text-justify">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
                         </p>
-                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                        <button className={`transition grow ${packet.boost == 'cvboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'cvboost' })}
                         >
                             PILIH
@@ -177,7 +177,7 @@ export default function SuperBoost() {
                         <p className="text-justify">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
                         </p>
-                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                        <button className={`transition grow ${packet.boost == 'esaiboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'esaiboost' })}
                         >
                             PILIH
@@ -190,7 +190,7 @@ export default function SuperBoost() {
                         <p className="text-justify">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
                         </p>
-                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                        <button className={`transition grow ${packet.boost == 'interviewboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'interviewboost' })}
                         >
                             PILIH
