@@ -5,7 +5,7 @@ import { dbUser } from "../db/connection.js";
 import createSecretToken from "../utils/token.js";
 export const insertUser = async (req, res) => {
     try {
-        const response = await fetch(`http://localhost:5050/user-management/users?email=${req.body.email}`);
+        const response = await fetch(`http://localhost:5050/user-management/user?email=${req.body.email}`);
 
         if (response.ok) {
             return res.status(400).json({ message: "Email sudah dipakai!" });

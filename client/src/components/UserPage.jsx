@@ -31,13 +31,13 @@ export default function UserPage() {
 
 
             const user = await authorized.json();
-            if (user.id.toString() !== params.id.toString()) {
+            if (user._id !== params.id) {
                 setErrorMessage("Access Denied")
                 return
             } else {
 
                 setIsAuthorized(true)
-                const response = await fetch(`http://localhost:5050/user-management/users/${params.id}`, {
+                const response = await fetch(`http://localhost:5050/user-management/user/${params.id}`, {
                     method: "GET",
                     credentials: "include",
                 });
@@ -66,11 +66,12 @@ export default function UserPage() {
     // This function will handle the submission.
     async function onSubmit(e) {
         e.preventDefault();
+
         const person = { ...form };
         try {
             let response;
 
-            response = await fetch(`http://localhost:5050/user-management/users/${params.id}`, {
+            response = await fetch(`http://localhost:5050/user-management/user/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

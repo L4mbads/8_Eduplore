@@ -29,8 +29,6 @@ router.get("/user/:id", getUserById);
 router.patch("/user/:id", editUser);
 
 
-router.get("/:id", getUserById);
-
 // This section will help you update a record by id.
 router.patch("/:id", editUser);
 
