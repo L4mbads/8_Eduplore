@@ -102,7 +102,7 @@ export default function Record() {
                         Yuk, Cek Beragam Beasiswa yang Bisa Kamu Ikuti!
                     </h1>
                 </div>
-                <div className="bg-white shadow-xl w-full flex flex-col px-6 sticky top-20 z-[10000]">
+                <div className="bg-white shadow-xl w-full flex flex-col px-6 sticky top-24 z-[10000]">
                     <div class="">
                         <input class="shadow appearance-none border-2  rounded-xl w-full py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="name" placeholder="Cari nama beasiswa di sini..."
                             onChange={(e) => updateQuery({ name: e.target.value })}
