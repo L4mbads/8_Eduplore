@@ -12,7 +12,7 @@ export default function Home() {
     useEffect(() => {
 
         async function getBeasiswaList() {
-            const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?count=3`);
+            const response = await fetch(`http://localhost:5050/beasiswa-management/beasiswa?count=4`);
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
                 console.error(message);
@@ -54,11 +54,18 @@ export default function Home() {
             <div className="pt-20 px-16 flex flex-col"> {/* Daftar beasiswa */}
                 <div className="flex items-center" id="beasiswa" ref={beasiswaRef}> {/* Judul Beasiswa*/}
                     <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9"></img>
-                    <h2 className="font-bold inline-flex items-end pl-2 text-xl">Rekomendasi Beasiswa Untukmu </h2>
+                    <div className="w-full flex flex-row justify-between items-center">
+
+                        <h2 className="font-bold inline-flex items-end pl-2 text-xl">Rekomendasi Beasiswa Untukmu </h2>
+                        <NavLink className="transition-all font-bold text-blue pl-2 text-lg
+                        hover:scale-110 hover:text-blue-80"
+                            to="/beasiswa">Lihat semua</NavLink>
+
+                    </div>
                 </div>
-                <div className="flex gap-x-6 shadow-inner self-center flex-nowrap px-6 z-20 w-full overflow-x-scroll justify-start items-center ">
+                <div className="flex gap-x-6 shadow-inner rounded-xl self-center flex-nowrap px-6 z-20 w-full overflow-x-scroll justify-start items-center ">
                     {beasiswaList.map((beasiswa) => {
-                        return <Beasiswa data={beasiswa} /> //to implement page, use slice((PAGE-1) * amount, PAGE * amount)
+                        return <Beasiswa data={beasiswa} />
                     })}
                 </div>
             </div>

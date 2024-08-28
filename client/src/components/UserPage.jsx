@@ -107,19 +107,19 @@ export default function UserPage() {
     return (
         <>
             <div className={`bg-gray ${isAuthorized ? "" : "hidden"}`}>
-                <div className="flex flex-row items-center  px-16 py-10">
+                <div className="flex flex-row items-center  px-16 pt-10">
                     <img src="../src/assets/arrow.svg" alt="" className="size-6 mr-4" />
                     <button className="transition-all text-blue font-semibold tracking-wide hover:translate-x-2 hover:scale-125 hover:text-blue-80" type="button" onClick={() => (navigate(-1))}>Kembali</button>
                 </div>
 
-                <h1 className="inline-block text-5xl px-28 py-10 font-semibold tracking-wide">
+                <h1 className="inline-block text-5xl px-28 pt-8 font-semibold tracking-wide">
                     Profil
                 </h1>
                 <div className="flex items-start justify-center">
                     <form className=" w-full max-w-6xl items-center  px-16"
                         onSubmit={onSubmit}
                     >
-                        <div className=" flex flex-col bg-white shadow-lg rounded-xl p-10 my-10">
+                        <div className=" flex flex-col bg-white shadow-lg rounded-xl p-10 my-3">
                             <h2 className="text-black opacity-60 font-semibold tracking-wide text-3xl">Biodata</h2>
                             <div className="flex flex-wrap gap-20 mt-6 items-end justify-center mb-6">
                                 <img src="../src/assets/avatar.svg" alt="avatar" className="size-36" />

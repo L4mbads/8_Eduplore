@@ -32,13 +32,24 @@ export default function Navbar() {
         getAuth();
     }, [location.pathname, navigate]);
 
+    async function onLogout() {
+        let response = await fetch("http://localhost:5050/auth/logout", {
+            method: "POST",
+            credentials: "include",
+        });
+
+        navigate('/')
+        window.location.reload()
+        return;
+    }
+
     const Unlogged = () => {
         return (
             <>
-                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-slate-100 h-9 rounded-md px-3 text-black border-blue " to="/signup">
+                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-gray h-9 rounded-md px-3 text-black border-blue " to="/signup">
                     Daftar
                 </NavLink>
-                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-blue hover:bg-slate-100 h-9 rounded-md px-3 text-white border-blue" to="/login">
+                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-blue hover:bg-blue-80 h-9 rounded-md px-3 text-white border-blue" to="/login">
                     Masuk
                 </NavLink>
             </>
@@ -47,14 +58,27 @@ export default function Navbar() {
 
     const Logged = () => {
         return (
-            <button className="group bg-gray px-4 py-2 rounded-full flex gap-x-2 items-center justify-center"
-                onClick={() => navigate(`/user/${userId}`)}
-            >
-                <div className="transition-all ease-in-out duration-500 text-blue font-semibold group-hover:text-blue-80 group-hover:tracking-wide">
-                    {userName}
+            <div className="relative group flex flex-col justify-start items-center">
+                <button className="transition-all absolute bg-blue-80 w-9/12 h-11 rounded-b-xl group-hover:translate-y-[70px] translate-y-1 flex items-end justify-center text-white pb-1"
+                    onClick={onLogout}
+                >
+                    Logout
+                </button>
+                <button className="transition-all absolute bg-blue w-9/12 h-9 rounded-b-xl group-hover:translate-y-[50px] translate-y-1 flex items-end justify-center text-white pb-1"
+                    onClick={() => { navigate(`/user/${userId}`) }}
+                >
+                    Profile
+                </button>
+                <div className="relative bg-gray px-4 py-2 rounded-full flex gap-x-2 items-center justify-center"
+                >
+                    <div className="transition-all ease-in-out duration-500 text-blue font-semibold group-hover:text-blue-80">
+                        {userName}
+                    </div>
+                    <img src="../src/assets/avatar.svg" alt="" className="size-10" />
+
                 </div>
-                <img src="../src/assets/avatar.svg" alt="" className="size-10" />
-            </button>
+
+            </div>
         )
     }
 
@@ -66,8 +90,8 @@ export default function Navbar() {
                 <NavLink className="flex-none" to="/">
                     <img alt="Eduplore" className="h-10 inline" src="../src/assets/eduplore(nama).png"></img>
                 </NavLink>
-                <div className="flex flex-wrap">
-                    <button className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
+                <div className="flex flex-wrap gap-x-3">
+                    <button className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
                     disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" onClick={() => {
                             navigate('/');
                             setTimeout(() => {
@@ -79,12 +103,12 @@ export default function Navbar() {
                         }}>
                         Program Kami
                     </button>
-                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
+                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
                     disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" to="/beasiswa" >
 
                         Beasiswa
                     </NavLink>
-                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
+                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
                     disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3 " to="/about">
                         Tentang Kami
                     </NavLink>
