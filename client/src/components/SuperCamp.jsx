@@ -43,9 +43,7 @@ export default function SuperCamp() {
         return;
     }, [navigate]);
 
-    function a() {
-        navigate('/');
-    }
+
     // These methods will update the state properties.
     function updatePacket(value) {
         return setPacket((prev) => {
@@ -74,7 +72,7 @@ export default function SuperCamp() {
 
             const user = await authorized.json();
 
-            const response = await fetch(`http://localhost:5050/user-management/user/${user.id.toString()}`, {
+            const response = await fetch(`http://localhost:5050/user-management/user/${user._id}`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -103,13 +101,13 @@ export default function SuperCamp() {
                 return
             }
 
+            navigate('/payment')
 
 
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
         } finally {
             setIsLoading(false)
-            navigate('/payment')
         }
 
 

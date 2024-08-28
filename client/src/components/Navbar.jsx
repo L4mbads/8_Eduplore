@@ -67,7 +67,7 @@ export default function Navbar() {
                 </NavLink>
                 <div className="flex flex-wrap">
                     <button className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" to="/create" onClick={() => {
+                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" onClick={() => {
                             navigate('/');
                             setTimeout(() => {
                                 layananRef.current?.scrollIntoView({

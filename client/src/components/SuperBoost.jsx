@@ -74,7 +74,7 @@ export default function SuperBoost() {
 
             const user = await authorized.json();
 
-            const response = await fetch(`http://localhost:5050/user-management/user/${user.id.toString()}`, {
+            const response = await fetch(`http://localhost:5050/user-management/user/${user._id}`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -104,13 +104,13 @@ export default function SuperBoost() {
             }
 
 
+            navigate('/payment')
 
 
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
         } finally {
             setIsLoading(false)
-            navigate('/payment')
         }
 
 

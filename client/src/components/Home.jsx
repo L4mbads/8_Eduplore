@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useScroll } from "./ScrollContext";
 import Beasiswa from "./Beasiswa";
@@ -8,7 +8,7 @@ import Footer from "./Footer";
 export default function Home() {
     const { layananRef, beasiswaRef } = useScroll();
     const [beasiswaList, setBeasiswaList] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
 
         async function getBeasiswaList() {
@@ -90,7 +90,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                     <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/')}
+                                        onClick={() => navigate('/supercamp')}
                                     >
                                         Detail
                                     </button>
@@ -117,7 +117,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                     <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/')}
+                                        onClick={() => navigate('/superexclusive')}
                                     >
                                         Detail
                                     </button>
@@ -129,7 +129,7 @@ export default function Home() {
                         <div className="flex flex-row gap-x-4 justify-between m-4">
                             <img src="../src/assets/Mentor3.png" className="size-max"></img>
                             <div className="grid-cols-1">
-                                <h3 className="font-bold text-3xl">SUPERCAMP</h3>
+                                <h3 className="font-bold text-3xl">SUPERBOOST</h3>
                                 <p className="font-ligh text-sm my-4">
                                     Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.
 
@@ -144,7 +144,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                     <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/')}
+                                        onClick={() => navigate('/superboost')}
                                     >
                                         Detail
                                     </button>
