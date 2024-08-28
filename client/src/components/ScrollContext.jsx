@@ -1,4 +1,5 @@
-import { createContext, useContext, useRef } from "react";
+import { createContext, useContext, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom"
 
 // Create the context
 const ScrollContext = createContext();
@@ -7,6 +8,11 @@ const ScrollContext = createContext();
 export const ScrollProvider = ({ children }) => {
   const layananRef = useRef(null);
   const beasiswaRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    document.body.scrollTo({ top: 0 })
+  }, [location.pathname])
 
   return (
     <ScrollContext.Provider value={{ layananRef, beasiswaRef }}>

@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
     return (
         <footer className="py-20 pl-20 bg-white shadow-xl z-50">
-            <div className="flex justify-start h-24 pt-6 pl-5">
-                <img src="../src/assets/eduplore(nama).png" className="h-10 inline mr-48"></img>
+            <div className="flex justify-start items-center h-24 py-3 pl-5">
+                <img src="../src/assets/eduplore(nama).png" className="h-16 w-auto inline mr-48"></img>
                 <p className="inline-flex items-center justify-center h-9 rounded-md px-3">Media informasi dan partner persiapan beasiswa untuk masa depanmu.</p>
             </div>
             <div className="h-0.5 bg-blue mr-10">
 
             </div>
-            <div className="flex jusrify-start pt-20 gap-x-48">
+            <div className="flex justify-start pt-20 gap-x-48 pl-5">
                 <div> {/* Hubungi kami */}
                     <h3 className="font-bold text-xl">Hubungi Kami</h3>
                     <div className="flex justify-start pt-6">

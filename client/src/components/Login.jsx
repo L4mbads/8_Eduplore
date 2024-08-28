@@ -42,7 +42,7 @@ export default function Login() {
                 //throw new Error(`HTTP error! status: ${response.status}`);
             } else {
 
-                navigate("/login");
+                navigate(-1);
             }
 
         } catch (error) {
@@ -90,12 +90,12 @@ export default function Login() {
                                 <input class="shadow appearance-none border-2  rounded-xl w-full py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="password" type="password" placeholder="Kata sandi" required
                                     onChange={(e) => updateForm({ password: e.target.value })}
                                 />
-                                <a className="text-blue font-semibold tracking-wide pl-2 text-sm" href="/create"> Lupa kata sandi?</a>
+                                <a className="text-blue font-semibold tracking-wide pl-2 text-sm"> Lupa kata sandi?</a>
 
                             </div>
-                            <div class="mb-6 flex items">
+                            <div class="mb-6 flex ">
                                 <label class=" grow ">
-                                    <input class="mr-2 leading-tight size-4 ring-blue" type="checkbox"
+                                    <input class="mr-2 leading-tight size-4 mt-1 ring-blue" type="checkbox"
                                         checked={form.rememberMe}
 
                                         onChange={(e) => updateForm({ rememberMe: e.target.checked })}
@@ -105,7 +105,7 @@ export default function Login() {
                                 <div>
 
                                     <p>Ingat Saya</p>
-                                    <p className="text-xs">Jangan klik kolom ini jika perangkat kamu digunakan oleh orang lain.</p>
+                                    <p className="text-xs font-light">Jangan klik kolom ini jika perangkat kamu digunakan oleh orang lain.</p>
                                 </div>
                             </div>
                             <div className="mb-6 text-center text-red font-bold">
