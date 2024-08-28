@@ -2,8 +2,8 @@ import React from "react";
 
 const Beasiswa = (props) => {
     return (
-        <div className="bg-white rounded-xl shadow-lg flex flex-col p-6 my-8 min-w-36 w-full lg:max-w-md">
-            <div className="flex flex-wrap w-1/2 gap-2 pb-6">
+        <div className="bg-white rounded-xl shadow-lg flex flex-col p-6 my-8 min-w-max w-full lg:max-w-md">
+            <div className="flex flex-wrap w-1/2 gap-2 pb-6 mr-24">
                 <div className="text-sm font-medium flex items-center justify-center bg-white w-fit rounded-lg border-2 border-blue px-2 min-w-16">
                     {props.data.degree}
                 </div>
