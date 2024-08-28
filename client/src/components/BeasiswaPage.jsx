@@ -86,7 +86,7 @@ export default function Record() {
     function NoResult() {
         return (
             <>
-                <h1 className="text-xl lg:text-5xl pt-16 h-96 text-blue font-semibold">Tidak ada hasil pencarian :(</h1>
+                <h1 className="text-xl lg:text-5xl pt-16 h-96 text-blue font-semibold">Tidak ada hasil pencarian</h1>
             </>
         )
     };

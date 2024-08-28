@@ -136,7 +136,7 @@ export default function UserPage() {
                                         <label class="  text-xl font-semibold text-blue " for="name">
                                             No. Telepon
                                         </label>
-                                        <input class="shadow appearance-none border-2  rounded-xl w-1/2 py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="name" type="number" value={form.phone} required
+                                        <input class="shadow appearance-none border-2  rounded-xl w-1/2 py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="phone" type="number" value={form.phone} required
                                             onChange={(e) => updateForm({ phone: e.target.value })}
                                         />
                                     </div>
