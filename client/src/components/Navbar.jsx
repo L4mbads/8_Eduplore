@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useScroll } from "./ScrollContext";
 import { useState, useEffect } from "react";
 
@@ -8,6 +8,7 @@ export default function Navbar() {
     const [userName, setUserName] = useState("")
     const [userId, setUserId] = useState("")
     const navigate = useNavigate();
+    const location = useLocation();
     useEffect(() => {
         async function getAuth() {
 
@@ -29,7 +30,7 @@ export default function Navbar() {
             }
         }
         getAuth();
-    }, [navigate]);
+    }, [location.pathname, navigate]);
 
     const Unlogged = () => {
         return (

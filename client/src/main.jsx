@@ -29,52 +29,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-      }
-    ],
-  },
-  {
-    path: "/",
-    element: <App />,
-    children: [
+      },
       {
         path: "/login",
         element: <Login />,
       },
-    ],
-  },
-  {
-    path: "/",
-    element: <App />,
-    children: [
       {
-
         path: "/signup",
         element: <Signup />,
-
       },
       {
-
         path: "/beasiswa",
         element: <BeasiswaPage />,
-
       },
-
-    ],
-  },
-  {
-    path: "/user/:id",
-    element: <App />,
-    children: [
-      {
-        path: "/user/:id",
-        element: <UserPage />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <App />,
-    children: [
       {
         path: "/superexclusive",
         element: <SuperExclusive />,
@@ -88,20 +55,18 @@ const router = createBrowserRouter([
         element: <SuperBoost />,
       },
       {
-        path: "/payment",
-        element: <PaymentSuccess />,
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/user/:id",
+        element: <UserPage />,
       },
     ],
   },
   {
-    path: "/about",
-    element: <App />,
-    children: [
-      {
-        path: "/about",
-        element: <About />,
-      },
-    ],
+    path: "/payment",
+    element: <PaymentSuccess />,
   },
 ]);
 
