@@ -13,6 +13,7 @@ import path from 'path';
 import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import { Console } from 'console';
 
 dotenv.config(); // Load environment variables
 
@@ -40,7 +41,7 @@ let recipientData = {
     month: null, // Default value (string), set to null if want to kept it randomly generated
     year: null, // Default value (string), set to null if want to kept it randomly generated
     mentor: null, // Default value (string), set to null if want to kept it randomly generated
-    dates: null, // Default value (string) (format: Day, Date Month Year), set to null if want to kept it randomly generated
+    dates: '', // Default value (string) (format: Day, Date Month Year), set to null if want to kept it randomly generated
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -162,11 +163,11 @@ function generateDayDate() {
 
 const sendEmail = async (req, res) => {
     const index = req.body.index || 0;
-    console.log(index)
     recipientData.name = req.body.name;
     recipientData.email = req.body.email;
-    console.log(req.body);
-    console.log(recipientData);
+    recipientData.dates = req.body.date;
+
+
     // Conditionally (automatically) include calendar data
     if (index === 1) {
         recipientData.calendar = generateCalendar();

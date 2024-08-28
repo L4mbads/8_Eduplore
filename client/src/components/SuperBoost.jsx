@@ -21,7 +21,9 @@ export default function SuperBoost() {
         mentorId: "",
         mentor: "",
         beasiswa: "",
+        boost: "",
         batch: "",
+        date: "",
         index: 3
     });
     const [mentorList, setMentorList] = useState([]);
@@ -57,7 +59,7 @@ export default function SuperBoost() {
         e.preventDefault();
         setIsLoading(true);
         try {
-            if (!packet.beasiswa || packet.batch == 0) {
+            if (!packet.boost || packet.date == '') {
                 setErrorMessage("Pastikan sudah memilih beasiswa dan batch!")
                 return
             }
@@ -154,19 +156,54 @@ export default function SuperBoost() {
                         Membahas persiapan yang diperlukan serta tips dan trik mulai dari seleksi berkas hingga wancara.
                     </p>
                 </div>
-                <div className="grow bg-white rounded-xl p-10 shadow-lg">
-                    <Select
-                        options={options[0]}
-                        value={packet.beasiswa}
-                        onChange={(e) => updatePacket({ beasiswa: e.target.value })}
-                    />
+                <div className="grow bg-white rounded-xl gap-x-4 p-10 shadow-lg flex flex-grow items-center justify-center">
+                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+                        <h2 className="font-bold text-2xl pb-6 text-center">
+                            CV BOOST
+                        </h2>
+                        <p className="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                        </p>
+                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                            onClick={() => updatePacket({ boost: 'cvboost' })}
+                        >
+                            PILIH
+                        </button>
+                    </div>
+                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+                        <h2 className="font-bold text-2xl pb-6 text-center">
+                            ESAI BOOST
+                        </h2>
+                        <p className="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                        </p>
+                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                            onClick={() => updatePacket({ boost: 'esaiboost' })}
+                        >
+                            PILIH
+                        </button>
+                    </div>
+                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+                        <h2 className="font-bold text-2xl pb-6 text-center">
+                            INTERVIEW BOOST
+                        </h2>
+                        <p className="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                        </p>
+                        <button className="transition grow bg-orange rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110"
+                            onClick={() => updatePacket({ boost: 'interviewboost' })}
+                        >
+                            PILIH
+                        </button>
+                    </div>
                 </div>
-                <div className="grow bg-white rounded-xl p-10 shadow-lg">
+                <div className="grow bg-white flex flex-col items-left justify-center rounded-xl p-10 shadow-lg">
+                    <h2 className="text-2xl font-bold pb-4">
+                        PILIH TANGGAL
+                    </h2>
+                    <input class="shadow appearance-none border-2 w-full  rounded-xl grow py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="date" type="date" placeholder=""
 
-                    <Select
-                        options={options[1]}
-                        value={packet.batch}
-                        onChange={(e) => updatePacket({ batch: e.target.value })}
+                        onChange={(e) => updatePacket({ date: e.target.value })}
                     />
                 </div>
                 <h3 className="text-center text-xl font-bold text-red">

@@ -47,7 +47,7 @@ export default function SuperExclusive() {
         e.preventDefault();
         setIsLoading(true)
         try {
-            if (packet.mentor == "" || packet.batch == 0) {
+            if (packet.mentor == "" || packet.date == "") {
                 setErrorMessage("Pastikan sudah memilih mentor dan batch!")
                 return
             }
@@ -178,13 +178,15 @@ export default function SuperExclusive() {
                         <img src="../src/assets/arrow.svg" alt="" className="size-16 ml-8 grow self-center rotate-180" />
                     </div>
                 </div>
-                <div className="grow bg-white rounded-xl p-10 shadow-lg">
-                    <Select
-                        options={options}
-                        value={packet.batch}
-                        onChange={(e) => updatePacket({ batch: e.target.value })}
-                    />
 
+                <div className="grow bg-white flex flex-col items-left justify-center rounded-xl p-10 shadow-lg">
+                    <h2 className="text-2xl font-bold pb-4">
+                        PILIH TANGGAL
+                    </h2>
+                    <input class="shadow appearance-none border-2 w-full  rounded-xl grow py-2 mb-2 px-3 leading-tight focus:outline-none focus:shadow-outline border-blue" id="date" type="date" placeholder=""
+
+                        onChange={(e) => updatePacket({ date: e.target.value })}
+                    />
                 </div>
                 <h3 className="text-center text-xl font-bold text-red">
                     {errorMessage}
