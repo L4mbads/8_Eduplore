@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Beasiswa from "./Beasiswa.jsx";
 
@@ -15,7 +15,7 @@ const options = [
     ],
 ];
 
-export default function Record() {
+export default function BeasiswaPage() {
     const [query, setQuery] = useState({
         name: "",
         degree: "",
