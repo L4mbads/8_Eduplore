@@ -77,6 +77,9 @@ Buat file `/server/config.env` dan isi dengan URI Atlas dan port:
 ```
 ATLAS_URI=mongodb+srv://<username>:<password>@eduploredb.8thpm.mongodb.net/?retryWrites=true&w=majority&appName=EduPloreDB
 PORT=5050
+TOKEN_KEY=sparta23
+EMAIL_USER=eduplore.kelompok@gmail.com
+EMAIL_PASS=meak ihic uatm cjgw
 ```
 Untuk akses umum, gunakan:\
 username = `public`\
