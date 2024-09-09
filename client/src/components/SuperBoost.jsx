@@ -154,7 +154,7 @@ export default function SuperBoost() {
                 </div>
                 <div className="grow bg-white rounded-xl gap-x-4 p-10 shadow-lg flex flex-grow items-center justify-center">
                     <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
-                        <h2 className="font-bold text-2xl pb-6 text-center">
+                        <h2 className="font-bold text-xl pb-6 text-center">
                             CV BOOST
                         </h2>
                         <p className="text-center">
@@ -167,7 +167,7 @@ export default function SuperBoost() {
                         </button>
                     </div>
                     <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
-                        <h2 className="font-bold text-2xl pb-6 text-center">
+                        <h2 className="font-bold text-xl pb-6 text-center">
                             ESAI BOOST
                         </h2>
                         <p className="text-center">
@@ -180,7 +180,7 @@ export default function SuperBoost() {
                         </button>
                     </div>
                     <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
-                        <h2 className="font-bold text-2xl pb-6 text-center">
+                        <h2 className="font-bold text-xl pb-6 text-center">
                             INTERVIEW BOOST
                         </h2>
                         <p className="text-center">
