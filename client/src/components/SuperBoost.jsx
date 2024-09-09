@@ -73,9 +73,7 @@ export default function SuperBoost() {
                 return;
             }
 
-
             const user = await authorized.json();
-
             const response = await fetch(`http://localhost:5050/user-management/user/${user._id}`, {
                 method: "GET",
                 credentials: "include",
@@ -87,7 +85,6 @@ export default function SuperBoost() {
             const userData = await response.json();
             packet.name = await userData.name;
             packet.email = await userData.email;
-
 
             const req = { ...packet }
 
@@ -108,13 +105,11 @@ export default function SuperBoost() {
 
             navigate('/payment')
 
-
         } catch (error) {
             console.error('A problem occurred with your fetch operation: ', error);
         } finally {
             setIsLoading(false)
         }
-
 
     }
     const Select = ({ value, options, onChange }) => {
@@ -163,7 +158,7 @@ export default function SuperBoost() {
                             CV BOOST
                         </h2>
                         <p className="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                            CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
                         </p>
                         <button className={`transition grow ${packet.boost == 'cvboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'cvboost' })}
@@ -176,7 +171,7 @@ export default function SuperBoost() {
                             ESAI BOOST
                         </h2>
                         <p className="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                            Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
                         </p>
                         <button className={`transition grow ${packet.boost == 'esaiboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'esaiboost' })}
@@ -189,7 +184,7 @@ export default function SuperBoost() {
                             INTERVIEW BOOST
                         </h2>
                         <p className="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa lorem, eu accumsan ipsum posuere vel.
+                            Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
                         </p>
                         <button className={`transition grow ${packet.boost == 'interviewboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'interviewboost' })}
@@ -216,7 +211,6 @@ export default function SuperBoost() {
                     DAFTAR
                     <div className={`inline-block ${isLoading ? '' : 'hidden'} h-8 w-8 mx-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white`} role="status" />
                 </button>
-
             </div>
         </div>
     );
