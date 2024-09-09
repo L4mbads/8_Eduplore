@@ -152,8 +152,9 @@ export default function SuperBoost() {
                         DESKRIPSI
                     </h2>
                     <p className="text-xl">
-                        Kelas intensif bersama para awardee selama rangkaian persiapan beasiswa.
-                        Membahas persiapan yang diperlukan serta tips dan trik mulai dari seleksi berkas hingga wancara.
+                        CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
+                        Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
+                        Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
                     </p>
                 </div>
                 <div className="grow bg-white rounded-xl gap-x-4 p-10 shadow-lg flex flex-grow items-center justify-center">
