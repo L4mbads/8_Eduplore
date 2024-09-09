@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+rimport { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const options = [
@@ -157,7 +157,7 @@ export default function SuperBoost() {
                         <h2 className="font-bold text-2xl pb-6 text-center">
                             CV BOOST
                         </h2>
-                        <p className="text-justify">
+                        <p className="text-center">
                             CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
                         </p>
                         <button className={`transition grow ${packet.boost == 'cvboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
@@ -170,7 +170,7 @@ export default function SuperBoost() {
                         <h2 className="font-bold text-2xl pb-6 text-center">
                             ESAI BOOST
                         </h2>
-                        <p className="text-justify">
+                        <p className="text-center">
                             Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
                         </p>
                         <button className={`transition grow ${packet.boost == 'esaiboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
@@ -183,7 +183,7 @@ export default function SuperBoost() {
                         <h2 className="font-bold text-2xl pb-6 text-center">
                             INTERVIEW BOOST
                         </h2>
-                        <p className="text-justify">
+                        <p className="text-center">
                             Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
                         </p>
                         <button className={`transition grow ${packet.boost == 'interviewboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
