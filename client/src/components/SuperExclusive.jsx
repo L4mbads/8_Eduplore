@@ -156,8 +156,7 @@ export default function SuperExclusive() {
                         DESKRIPSI
                     </h2>
                     <p className="text-xl">
-                        Kelas intensif bersama para awardee selama rangkaian persiapan beasiswa.
-                        Membahas persiapan yang diperlukan serta tips dan trik mulai dari seleksi berkas hingga wancara.
+                        Mentoring eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang user butuhkan
                     </p>
                 </div>
                 <div className="grow bg-white rounded-xl p-10 shadow-lg">
