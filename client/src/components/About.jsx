@@ -5,10 +5,10 @@ export default function About() {
     <div className="about-container">
       <div className="background-section">
         <div className="about-content">
-          <h1 className="text-4xl font-bold mt-28 ml-28">Raih cita-citamu,</h1>
-          <h1 className="text-4xl font-bold mt-1 ml-28">Raih beasiswa impianmu,</h1>
-          <h1 className="text-4xl font-bold mt-1 ml-28">Matangkan persiapanmu</h1>
-          <p className="text-2xl mt-12 ml-28 mr-28">
+          <h1 className="md:text-4xl sm:text-2xl font-bold mt-28 ml-28">Raih cita-citamu,</h1>
+          <h1 className="md:text-4xl sm:text-2xl font-bold mt-1 ml-28">Raih beasiswa impianmu,</h1>
+          <h1 className="md:text-4xl sm:text-2xl font-bold mt-1 ml-28">Matangkan persiapanmu</h1>
+          <p className="md:text-2xl mt-12 ml-28 mr-28 sm:text-lg">
             Daftarkan dirimu ke beragam kelas dan layanan terlengkap, mulai dari konsultasi pendaftaran kuliah dan beasiswa ke
             luar negeri hingga bimbingan sertifikasi bahasa asing online!
           </p>
