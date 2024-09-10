@@ -21,6 +21,7 @@ try {
     console.error(err);
 }
 
-let db = client.db("employees");
 
-export default db;
+export let dbUser = client.db("users");
+export let dbProgram = client.db("program");
+
