@@ -116,15 +116,15 @@ export default function Navbar() {
                         Tentang Kami
                     </NavLink>
                 </div>
-                <div className="pr-10 bg-white flex flex-wrap justify-center gap-x-6 items-center lg:flex hidden">
+                <div className="pr-10 bg-white flex flex-wrap justify-center gap-x-6 items-center md:flex hidden">
                     {isAuthorized ? <Logged /> : <Unlogged />}
                 </div>
                 <i className="bx bx-menu block text-5xl cursor-pointer lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
-                <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 
+                <div className={`absolute lg:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 
                     text-lg transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
                     
                     style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
-                    <div className="ml-8 bg-white flex flex-wrap justify-center gap-x-6 items-center">
+                    <div className="max-sm:flex hidden ml-8 bg-white flex flex-wrap justify-center gap-x-6 items-center">
                         {isAuthorized ? <Logged /> : <Unlogged />}
                     </div>
                     <button className="list-none w-full text-center p-4 hover:text-blue" onClick={() => {
