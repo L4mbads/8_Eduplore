@@ -70,98 +70,70 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="pt-20 px-16 relative"> {/* Layanan kami */}
-                <img src="../src/assets/Vector 3.png" className="absolute top-80 left-0 w-full object-none scale-150 pointer-events-none"></img>
-                <div className="flex pb-10 items-center" id="layanan" ref={layananRef}> {/* Judul Layanan*/}
-                    <img alt="Home" src="../src/assets/Layanan.png" className="h-14"></img>
-                    <h2 className="font-bold inline-flex items-end pl-2 text-lg sm:text-xl lg:text-2xl">Program Unggulan Kami </h2>
+            <div className="pt-20 px-6 sm:px-10 md:px-16 relative">
+                
+                <div className="flex items-center pb-10">
+                    <img alt="Program Unggulan" src="../src/assets/Layanan.png" className="w-10 h-10" />
+                    <h2 className="font-bold text-xl pl-2">Program Unggulan Kami</h2>
                 </div>
-                <div className="flex flex-nowrap gap-2 w-full items-center justify-start overflow-x-auto"> {/* Daftar2 mentoring */}
 
-                    <div className="flex-none relative bg-white items-start rounded-xl max-w-lg"> {/* 1 */}
-                        <div className="flex flex-row gap-x-4 justify-between m-4">
-                            <img src="../src/assets/Mentor1.png" className="size-max"></img>
-                            <div className="grid-cols-1">
-                                <h3 className="font-bold text-3xl">SUPERCAMP</h3>
-                                <p className="font-ligh text-sm my-4">
-                                    Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.
-
-                                </p>
-                                <div className="flex flex-row items-center justify-around mt-8">
-                                    <div className="w-1/3 flex flex-col flex-none">
-                                        <p className="text-3xl font-semibold">
-                                            70K
-                                        </p>
-                                        <p className="text-right text-sm">
-                                            /sesi
-                                        </p>
+                <div className="flex flex-nowrap gap-4 overflow-x-auto scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3">
+                    {/* Program Card 1 */}
+                    <div className="min-w-[250px] md:min-w-0 bg-white p-4 rounded-xl shadow-md">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <img src="../src/assets/Mentor1.png" alt="Supercamp" className="w-full h-32 object-cover rounded-md md:w-1/3" />
+                            <div className="flex flex-col justify-between">
+                                <h3 className="font-bold text-2xl">SUPERCAMP</h3>
+                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <div className="flex items-center justify-between mt-4">
+                                    <div>
+                                        <p className="text-xl font-semibold">70K</p>
+                                        <p className="text-sm">/sesi</p>
                                     </div>
-                                    <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/supercamp')}
-                                    >
-                                        Detail
-                                    </button>
+                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/supercamp')}>Detail</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex-none relative bg-white items-start rounded-xl max-w-lg "> {/* 1 */}
-                        <div className="flex flex-row gap-x-4 justify-between m-4">
-                            <img src="../src/assets/Mentor2.png" className="size-max"></img>
-                            <div className="grid-cols-1">
-                                <h3 className="font-bold text-3xl">SUPER-EXCLUSIVE</h3>
-                                <p className="font-ligh text-sm my-2">
-                                    Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.
 
-                                </p>
-                                <div className="flex flex-row items-center justify-around mt-3">
-                                    <div className="w-1/3 flex flex-col flex-none">
-                                        <p className="text-3xl font-semibold">
-                                            70K
-                                        </p>
-                                        <p className="text-right text-sm">
-                                            /sesi
-                                        </p>
+                    {/* Program Card 2 */}
+                    <div className="min-w-[250px] md:min-w-0 bg-white p-4 rounded-xl shadow-md">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <img src="../src/assets/Mentor2.png" alt="Superexclusive" className="w-full h-32 object-cover rounded-md md:w-1/3" />
+                            <div className="flex flex-col justify-between">
+                                <h3 className="font-bold text-2xl">SUPER-EXCLUSIVE</h3>
+                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <div className="flex items-center justify-between mt-4">
+                                    <div>
+                                        <p className="text-xl font-semibold">70K</p>
+                                        <p className="text-sm">/sesi</p>
                                     </div>
-                                    <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/superexclusive')}
-                                    >
-                                        Detail
-                                    </button>
+                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/superexclusive')}>Detail</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex-none relative bg-white items-start rounded-xl max-w-lg"> {/* 1 */}
-                        <div className="flex flex-row gap-x-4 justify-between m-4">
-                            <img src="../src/assets/Mentor3.png" className="size-max"></img>
-                            <div className="grid-cols-1">
-                                <h3 className="font-bold text-3xl">SUPERBOOST</h3>
-                                <p className="font-ligh text-sm my-4">
-                                    Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.
 
-                                </p>
-                                <div className="flex flex-row items-center justify-around mt-8">
-                                    <div className="w-1/3 flex flex-col flex-none">
-                                        <p className="text-3xl font-semibold">
-                                            70K
-                                        </p>
-                                        <p className="text-right text-sm">
-                                            /sesi
-                                        </p>
+                    {/* Program Card 3 */}
+                    <div className="min-w-[250px] md:min-w-0 bg-white p-4 rounded-xl shadow-md">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <img src="../src/assets/Mentor3.png" alt="Superboost" className="w-full h-32 object-cover rounded-md md:w-1/3" />
+                            <div className="flex flex-col justify-between">
+                                <h3 className="font-bold text-2xl">SUPERBOOST</h3>
+                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <div className="flex items-center justify-between mt-4">
+                                    <div>
+                                        <p className="text-xl font-semibold">70K</p>
+                                        <p className="text-sm">/sesi</p>
                                     </div>
-                                    <button className="transition bg-orange rounded-xl px-10 py-1 shadow-lg text-lg text-white font-bold tracking-wide hover:bg-orange-80 hover:scale-110"
-                                        onClick={() => navigate('/superboost')}
-                                    >
-                                        Detail
-                                    </button>
+                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/superboost')}>Detail</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
 
             <div className="pt-32 px-16"> {/* Judul Mengapa Eduplore */}
                 <h3 className="font-bold text-4xl text-center mb-10">Mengapa Eduplore?</h3>
@@ -190,17 +162,17 @@ export default function Home() {
                 </div>
             </div>
             <div className="relative w-full bg-blue items-start pl-10 pr-48 bg-gradient-to-t from-blue to-gray shadow- pt-20 relativ">
-                <img src="../src/assets/Vector 2.png" className="absolute bottom-20 left-0 w-screen object-none scale-150 pointer-events-none"></img>
+                <img src="../src/assets/Vector 2.png" className="absolute bottom-20 left-0 w-screen object-none scale-150 pointer-events-none max-xl:hidden"></img>
                 <div className="grid grid-cols-2 ml-10 gap-x-20 max-sm:grid grid-cols-2">
-                    <div className="max-sm:text text-sm">
-                        <p className="text-blue text-xl font-bold">RIBUAN orang telah meraih
+                    <div className="text-center md:text-left max-w-lg mx-auto md:mx-0">
+                        <p className="text-blue text-lg sm:text-xl md:text-2xl font-bold">RIBUAN orang telah meraih
                             beasiswa impiannya di</p>
-                        <p className="text-blue text-3xl font-bold pt-20">TOP 100 UNIVERSITAS
+                        <p className="text-blue text-2xl sm:text-3xl md:text-4xl font-bold mt-4 md:mt-6">TOP 100 UNIVERSITAS
                             TERBAIK DUNIA</p>
                         <p className="text-white text-4xl font-bold italic pt-20 pb-80">Sekarang giliran kamu!</p>
 
                     </div>
-                    <div className="grid grid-cols-2 relative max-sm:hidden"> {/* Foto */}
+                    <div className="grid grid-cols-2 relative max-xl:hidden"> {/* Foto */}
                         <img src="../src/assets/Xaviera.png"></img>
                         <img src="../src/assets/Maudy.png"></img>
                         <img src="../src/assets/Axel.png" className="absolute top-80"></img>
