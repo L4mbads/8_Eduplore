@@ -9,6 +9,7 @@ export default function Navbar() {
     const [userId, setUserId] = useState("")
     const navigate = useNavigate();
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     useEffect(() => {
         async function getAuth() {
 
@@ -46,12 +47,14 @@ export default function Navbar() {
     const Unlogged = () => {
         return (
             <>
-                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-gray h-9 rounded-md px-3 text-black border-blue " to="/signup">
-                    Daftar
-                </NavLink>
-                <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-blue hover:bg-blue-80 h-9 rounded-md px-3 text-white border-blue" to="/login">
-                    Masuk
-                </NavLink>
+                <div className="  pr-10 bg-white flex flex-wrap justify-center gap-x-6">
+                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-gray h-9 rounded-md px-3 text-black border-blue " to="/signup">
+                        Daftar
+                    </NavLink>
+                    <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-blue hover:bg-blue-80 h-9 rounded-md px-3 text-white border-blue" to="/login">
+                        Masuk
+                    </NavLink>
+                </div>
             </>
         )
     }
@@ -90,9 +93,9 @@ export default function Navbar() {
                 <NavLink className="flex-none" to="/">
                     <img alt="Eduplore" className="h-10 inline" src="../src/assets/eduplore(nama).png"></img>
                 </NavLink>
-                <div className="flex flex-wrap gap-x-3">
+                <div className="flex flex-wrap gap-x-3 lg:flex item-center text-base hidden">
                     <button className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" onClick={() => {
+                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3 hover:text-blue" onClick={() => {
                             navigate('/');
                             setTimeout(() => {
                                 layananRef.current?.scrollIntoView({
@@ -104,19 +107,44 @@ export default function Navbar() {
                         Program Kami
                     </button>
                     <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3" to="/beasiswa" >
+                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3 hover:text-blue" to="/beasiswa" >
 
                         Beasiswa
                     </NavLink>
                     <NavLink className="inline-flex items-center justify-center whitespace-nowrap text-md font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3 " to="/about">
+                    disabled:pointer-events-none disabled:opacity-50 h-9 rounded-md px-3 hover:text-blue" to="/about">
                         Tentang Kami
                     </NavLink>
                 </div>
-                <div className="pr-10 bg-white flex flex-wrap justify-center gap-x-6 items-center">
+                <div className="pr-10 bg-white flex flex-wrap justify-center gap-x-6 items-center md:flex hidden">
                     {isAuthorized ? <Logged /> : <Unlogged />}
                 </div>
-
+                <i className="bx bx-menu block text-5xl cursor-pointer lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
+                <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 
+                    text-lg transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
+                    
+                    style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
+                    <div className="max-sm:flex hidden ml-8 bg-white flex flex-wrap justify-center gap-x-6 items-center">
+                        {isAuthorized ? <Logged /> : <Unlogged />}
+                    </div>
+                    <button className="list-none w-full text-center p-4 hover:text-blue" onClick={() => {
+                            navigate('/');
+                            setTimeout(() => {
+                                layananRef.current?.scrollIntoView({
+                                    behavior: "smooth"
+                                })
+                            }, 200);
+                        
+                        }}>
+                        Program kami
+                    </button>
+                    <NavLink className="list-none w-full text-center p-4 hover:text-blue" to="/beasiswa">
+                        Beasiswa
+                    </NavLink>
+                    <NavLink className="list-none w-full text-center p-4 hover:text-blue" to="/about">
+                        Tentang kami
+                    </NavLink>
+                </div>
             </nav>
         </header>
     );
