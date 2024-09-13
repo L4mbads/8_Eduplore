@@ -51,7 +51,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="pt-20 px-16 flex flex-col"> {/* Daftar beasiswa */}
+            <div className="px-4 sm:px-6 lg:px-8 py-6"> {/* Daftar beasiswa */}
                 <div className="flex items-center" id="beasiswa" ref={beasiswaRef}> {/* Judul Beasiswa*/}
                     <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9"></img>
                     <div className="w-full flex flex-row justify-between items-center">
@@ -70,9 +70,9 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="pt-20 px-6 sm:px-10 md:px-16 relative">
+            <div className="pt-20 px-6 sm:px-10 md:px-16 relative" id="layanan" ref={layananRef}>
                 
-                <div className="flex items-center pb-10">
+                <div className="flex items-center pb-10" >
                     <img alt="Program Unggulan" src="../src/assets/Layanan.png" className="w-10 h-10" />
                     <h2 className="font-bold text-xl pl-2">Program Unggulan Kami</h2>
                 </div>
