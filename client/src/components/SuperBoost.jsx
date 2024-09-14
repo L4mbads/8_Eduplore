@@ -147,52 +147,66 @@ export default function SuperBoost() {
                         DESKRIPSI
                     </h2>
                     <p className="text-xl">
-                        CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
-                        Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
-                        Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
+                        Peningkatan skill secara terpisah untuk CV, Esai, dan interview dengan teori sekaligus praktik langsung
                     </p>
                 </div>
-                <div className="grow bg-white rounded-xl gap-x-4 p-10 shadow-lg flex flex-grow items-center justify-center">
-                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+                <div className="grow bg-white rounded-xl p-10 shadow-lg grid grid-cols-1 gap-y-6 lg:grid-cols-3 gap-x-6 items-start justify-items-center w-full">
+                    {/* CV Boost */}
+                    <div className="bg-gray p-4 rounded-xl w-full flex flex-col h-full max-w-[400px]">
                         <h2 className="font-bold text-xl pb-6 text-center">
-                            CV BOOST
+                        CV BOOST
                         </h2>
-                        <p className="text-center">
-                            CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
+                        <p className="text-center flex-grow">
+                        CV Boost yang berisikan tips & trick, proofreading, dan feedback terkait CV yang dibuat.
                         </p>
-                        <button className={`transition grow ${packet.boost == 'cvboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
+                        <div className="flex justify-center mt-auto">
+                        <button className={`transition w-full max-w-[250px] ${packet.boost == 'cvboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'cvboost' })}
                         >
                             PILIH
                         </button>
+                        </div>
                     </div>
-                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+
+                    {/* Esai Boost */}
+                    <div className="bg-gray p-4 rounded-xl w-full flex flex-col h-full max-w-[400px]">
                         <h2 className="font-bold text-xl pb-6 text-center">
-                            ESAI BOOST
+                        ESAI BOOST
                         </h2>
-                        <p className="text-center">
-                            Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
+                        <p className="text-center flex-grow">
+                        Esai Boost yang berisikan tips & trick, proofreading, dan feedback terkait esai yang dibuat.
                         </p>
-                        <button className={`transition grow ${packet.boost == 'esaiboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
+                        <div className="flex justify-center mt-auto">
+                        <button className={`transition w-full max-w-[250px] ${packet.boost == 'esaiboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'esaiboost' })}
                         >
                             PILIH
                         </button>
+                        </div>
                     </div>
-                    <div className="bg-gray p-4 rounded-xl w-1/4 flex flex-col">
+
+                    {/* Interview Boost */}
+                    <div className="bg-gray p-4 rounded-xl w-full flex flex-col h-full max-w-[400px]">
                         <h2 className="font-bold text-xl pb-6 text-center">
-                            INTERVIEW BOOST
+                        INTERVIEW BOOST
                         </h2>
-                        <p className="text-center">
-                            Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
+                        <p className="text-center flex-grow">
+                        Interview Boost yang berisikan tips & trick, mockup interview, feedback terkait performa dari user.
                         </p>
-                        <button className={`transition grow ${packet.boost == 'interviewboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
+                        <div className="flex justify-center mt-auto">
+                        <button className={`transition w-full max-w-[250px] ${packet.boost == 'interviewboost' ? 'bg-orange-60' : 'bg-orange'} rounded-xl mx-6 mt-6 mb-4 shadow-lg text-white font-bold text-3xl tracking-widest hover:bg-orange-80 hover:scale-110`}
                             onClick={() => updatePacket({ boost: 'interviewboost' })}
                         >
                             PILIH
                         </button>
+                        </div>
                     </div>
                 </div>
+
+
+
+
+
                 <div className="grow bg-white flex flex-col items-left justify-center rounded-xl p-10 shadow-lg">
                     <h2 className="text-2xl font-bold pb-4">
                         PILIH TANGGAL
