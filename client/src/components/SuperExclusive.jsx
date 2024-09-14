@@ -138,9 +138,9 @@ export default function SuperExclusive() {
     return (
         <div className="relative flex flex-col w-full items-start bg-gradient-to-b from-blue to-transparent from-30% to-65% min-h-screen pb-16">
             <img src="../src/assets/super_bg.svg" className="absolute right-0 -top-24 object-none z-0" />
-            <div className="flex flex-row items-center px-16 py-10 ">
-                <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4" />
-                <button className="transition-all text-white font-semibold tracking-wide hover:translate-x-2 hover:scale-125" type="button" onClick={() => (navigate(-1))}>Kembali</button>
+            <div className="flex flex-row items-center px-16 py-10">
+                <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4 " />
+                <button className="transition-all text-white font-semibold tracking-wide hover:translate-x-2 hover:scale-125 " type="button" onClick={() => (navigate(-1))}>Kembali</button>
             </div>
             <div className="flex flex-col w-full justify-center md:justify-start items-center md:items-start px-40 mb-16 ">
                 <h1 className=" text-white font-bold tracking-wide text-5xl ">
@@ -156,7 +156,7 @@ export default function SuperExclusive() {
                         DESKRIPSI
                     </h2>
                     <p className="text-xl">
-                        Mentoring eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang user butuhkan
+                        Mentoring 1-on-1 dengan awardee beasiswa yang ingin kamu ikuti atau ekspertis di bidangnya.
                     </p>
                 </div>
                 <div className="grow bg-white rounded-xl p-10 shadow-lg">

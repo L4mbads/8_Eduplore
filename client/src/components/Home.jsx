@@ -27,8 +27,8 @@ export default function Home() {
 
 
     return (
-        <div>
-            <div className="pt-10 px-4 sm:px-8 lg:px-16 overflow-x-hidden"> {/* Bagian Home */}
+        <div className="">
+            <div className="pt-10 px-4 sm:px-8 lg:px-16 overflow-x-hidden overflow-y-hidden"> {/* Bagian Home */}
                 <div className="flex items-center pb-5"> {/* Judul Home*/}
                     <img alt="Home" src="../src/assets/Home.png" className="size-9"></img>
                     <h2 className="font-bold inline-flex items-end pl-2 text-lg sm:text-xl lg:text-2xl">Home</h2>
@@ -51,12 +51,12 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="px-4 sm:px-6 lg:px-8 py-6"> {/* Daftar beasiswa */}
+            <div className="px-4 sm:px-6 lg:px-8 py-6 pt-32"> {/* Daftar beasiswa */}
                 <div className="flex items-center" id="beasiswa" ref={beasiswaRef}> {/* Judul Beasiswa*/}
-                    <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9"></img>
+                    <img alt="Home" src="../src/assets/Beasiswa.png" className="size-9 lg:ml-8 sm:ml-10"></img>
                     <div className="w-full flex flex-row justify-between items-center">
 
-                        <h2 className="font-bold inline-flex items-end pl-2 text-lg sm:text-xl lg:text-2xl">Rekomendasi Beasiswa Untukmu </h2>
+                        <h2 className="font-bold inline-flex items-end pl-2 text-lg sm:text-lg lg:text-xl">Beasiswa yang sedang dibuka!</h2>
                         <NavLink className="transition-all font-bold text-blue pl-2 text-lg
                         hover:scale-110 hover:text-blue-80"
                             to="/beasiswa">Lihat semua</NavLink>
@@ -73,7 +73,7 @@ export default function Home() {
             <div className="pt-20 px-6 sm:px-10 md:px-16 relative" id="layanan" ref={layananRef}>
                 
                 <div className="flex items-center pb-10" >
-                    <img alt="Program Unggulan" src="../src/assets/Layanan.png" className="w-10 h-10" />
+                    <img alt="Program Unggulan" src="../src/assets/Layanan.png" className="w-10 h-16" />
                     <h2 className="font-bold text-xl pl-2">Program Unggulan Kami</h2>
                 </div>
 
@@ -84,13 +84,10 @@ export default function Home() {
                             <img src="../src/assets/Mentor1.png" alt="Supercamp" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
                                 <h3 className="font-bold text-2xl">SUPERCAMP</h3>
-                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <p className="text-sm mt-2">Rangkaian kelas intensif untuk mempersiapkan pendaftaran dari seleksi berkas hingga tahap interview pada beasiswa tertentu</p>
                                 <div className="flex items-center justify-between mt-4">
-                                    <div>
-                                        <p className="text-xl font-semibold">70K</p>
-                                        <p className="text-sm">/sesi</p>
-                                    </div>
-                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/supercamp')}>Detail</button>
+                                    
+                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600 max-xl:mt-2 " onClick={() => navigate('/supercamp')}>Detail</button>
                                 </div>
                             </div>
                         </div>
@@ -102,12 +99,9 @@ export default function Home() {
                             <img src="../src/assets/Mentor2.png" alt="Superexclusive" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
                                 <h3 className="font-bold text-2xl">SUPER-EXCLUSIVE</h3>
-                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <p className="text-sm mt-2">Mentoring Eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang dibutuhkan</p>
                                 <div className="flex items-center justify-between mt-4">
-                                    <div>
-                                        <p className="text-xl font-semibold">70K</p>
-                                        <p className="text-sm">/sesi</p>
-                                    </div>
+                                    
                                     <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/superexclusive')}>Detail</button>
                                 </div>
                             </div>
@@ -120,13 +114,10 @@ export default function Home() {
                             <img src="../src/assets/Mentor3.png" alt="Superboost" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
                                 <h3 className="font-bold text-2xl">SUPERBOOST</h3>
-                                <p className="text-sm mt-2">Webinar intensif bersama awardee selama rangkaian persiapan beasiswa.</p>
+                                <p className="text-sm mt-2">Peningkatan skill secara terpisah untuk CV, Esai, dan Interview dengan metode teori sekaligus praktik langsung</p>
                                 <div className="flex items-center justify-between mt-4">
-                                    <div>
-                                        <p className="text-xl font-semibold">70K</p>
-                                        <p className="text-sm">/sesi</p>
-                                    </div>
-                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600" onClick={() => navigate('/superboost')}>Detail</button>
+                                    
+                                    <button className="bg-orange text-white px-4 py-2 rounded-md shadow hover:bg-orange-600 max-xl:mt-8" onClick={() => navigate('/superboost')}>Detail</button>
                                 </div>
                             </div>
                         </div>

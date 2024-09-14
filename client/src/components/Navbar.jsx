@@ -81,7 +81,7 @@ export default function Navbar() {
                 </NavLink>
 
                 {/* Menu Links for Large Screens */}
-                <div className="hidden lg:flex gap-x-3 items-center text-base">
+                <div className="hidden lg:flex gap-x-10 items-center text-base">
                     <button className="text-md font-semibold hover:text-blue" onClick={() => {
                         navigate('/');
                         setTimeout(() => layananRef.current?.scrollIntoView({ behavior: "smooth" }), 200);

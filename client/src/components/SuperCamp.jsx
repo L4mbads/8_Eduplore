@@ -147,8 +147,7 @@ export default function SuperCamp() {
                         DESKRIPSI
                     </h2>
                     <p className="text-xl">
-                        Kelas intensif bersama para awardee selama rangkaian persiapan beasiswa.
-                        Membahas persiapan yang diperlukan serta tips dan trik mulai dari seleksi berkas hingga wancara.
+                        Rangkaian kelas intensif mulai dari persiapan berkas hingga tahap wawancara pada beasiswa tertentu.
                     </p>
                 </div>
                 <div className="grow bg-white rounded-xl p-10 shadow-lg">
