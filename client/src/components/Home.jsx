@@ -27,7 +27,7 @@ export default function Home() {
 
 
     return (
-        <div className="">
+        <div className="overflow-x-hidden">
             <div className="pt-10 px-4 sm:px-8 lg:px-16 overflow-x-hidden overflow-y-hidden"> {/* Bagian Home */}
                 <div className="flex items-center pb-5"> {/* Judul Home*/}
                     <img alt="Home" src="../src/assets/Home.png" className="size-9"></img>
