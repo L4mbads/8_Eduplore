@@ -10,6 +10,7 @@ export default function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
 
     useEffect(() => {
         async function getAuth() {
@@ -27,6 +28,7 @@ export default function Navbar() {
                 setIsAuthorized(true);
                 setUserName(userData.username);
                 setUserId(userData._id);
+                return;
             }
         }
         getAuth();
@@ -39,6 +41,7 @@ export default function Navbar() {
         });
         navigate('/');
         window.location.reload();
+        return;
     }
 
     const Unlogged = () => (
@@ -52,26 +55,48 @@ export default function Navbar() {
         </div>
     );
 
-    const Logged = () => (
-        <div className="relative group flex flex-col justify-start items-center">
-            <button
-                className="transition-all bg-blue-80 w-9/12 h-11 rounded-b-xl group-hover:translate-y-[70px] flex items-end justify-center text-white pb-1"
-                onClick={onLogout}>
-                Logout
-            </button>
-            <button
-                className="transition-all bg-blue w-9/12 h-9 rounded-b-xl group-hover:translate-y-[50px] flex items-end justify-center text-white pb-1"
-                onClick={() => navigate(`/user/${userId}`)}>
-                Profile
-            </button>
-            <div className="bg-gray px-4 py-2 rounded-full flex gap-x-2 items-center justify-center">
-                <div className="text-blue font-semibold group-hover:text-blue-80">
-                    {userName}
+    
+    const Logged = () => {
+        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    
+        const toggleDropdown = () => {
+            setIsDropdownOpen(!isDropdownOpen);
+        };
+    
+        return (
+            <div className="relative flex flex-col justify-start items-center">
+                {/* Buttons for Logout and Profile */}
+                {isDropdownOpen && (
+                    <>
+                        <button
+                            className="transition-all absolute bg-blue-80 w-full max-w-xs h-11 pt-4 rounded-b-xl translate-y-[62px] flex items-center justify-center text-white"
+                            onClick={onLogout}
+                        >
+                            Logout
+                        </button>
+                        <button
+                            className="transition-all absolute bg-blue w-full max-w-xs h-12 pt-4 rounded-b-xl translate-y-[34px] flex items-center justify-center text-white"
+                            onClick={() => navigate(`/user/${userId}`)}
+                        >
+                            Profile
+                        </button>
+                    </>
+                )}
+    
+                {/* Clickable Name and Avatar */}
+                <div
+                    className="relative bg-gray px-4 py-2 rounded-full flex gap-x-2 items-center justify-center cursor-pointer"
+                    onClick={toggleDropdown} // Add onClick to toggle dropdown
+                >
+                    <div className="transition-all ease-in-out duration-500 text-blue font-semibold group-hover:text-blue-80">
+                        {userName}
+                    </div>
+                    <img src="../src/assets/avatar.svg" alt="" className="size-10" />
                 </div>
-                <img src="../src/assets/avatar.svg" alt="" className="h-10 w-10" />
             </div>
-        </div>
-    );
+        );
+    };
+    
 
     return (
         <header className="sticky top-0 z-[9999] bg-white">
