@@ -163,7 +163,7 @@ export default function Home() {
                         <p className="text-white text-4xl font-bold italic pt-20 pb-80">Sekarang giliran kamu!</p>
 
                     </div>
-                    <div className="grid grid-cols-2 relative max-xl:hidden"> {/* Foto */}
+                    <div className="grid grid-cols-2 relative max-xl:none"> {/* Foto */}
                         <img src="../src/assets/Xaviera.png"></img>
                         <img src="../src/assets/Maudy.png"></img>
                         <img src="../src/assets/Axel.png" className="absolute top-80"></img>
