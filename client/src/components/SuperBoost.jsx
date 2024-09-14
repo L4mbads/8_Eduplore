@@ -130,18 +130,17 @@ export default function SuperBoost() {
         <div className="relative flex flex-col w-full items-start bg-gradient-to-b from-blue to-transparent from-30% to-65% min-h-screen pb-16">
             <img src="../src/assets/super_bg.svg" className="absolute right-0 -top-24 object-none z-0" />
             <div className="flex flex-row items-center px-16 py-10 ">
-                <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4" />
-                <button className="transition-all text-white font-semibold tracking-wide hover:translate-x-2 hover:scale-125 z-10" 
-                    type="button" 
-                    onClick={() => (navigate(-1))}>
-                    Kembali
-                </button>
+                <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4 hidden" />
+                <div className="flex flex-row items-center px-4 sm:px-6 md:px-16 py-10 absolute left-0">
+                    <img src="../src/assets/arrow2.svg" alt="" className="size-6 mr-4" />
+                    <button className="transition-all text-white font-semibold tracking-wide hover:translate-x-2 hover:scale-125" type="button" onClick={() => (navigate(-1))}>Kembali</button>
+                </div>
             </div>
             <div className="flex flex-col w-full justify-center md:justify-start items-center md:items-start px-40 mb-16 ">
-                <h1 className=" text-white font-bold tracking-wide text-5xl ">
+                <h1 className=" text-white font-bold tracking-wide text-5xl max-sm:text-3xl">
                     SUPERBOOST
                 </h1>
-                <h3 className="bg-green text-black font-semibold mt-4 px-2 py-1 rounded-xl ">
+                <h3 className="bg-green text-black font-semibold mt-4 px-2 py-1 rounded-xl whitespace-nowrap">
                     Rating: 4.7
                 </h3>
             </div>
