@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 const options = [
     [
         { label: 'PILIH BEASISWA', value: "" },
-        { label: 'Indonesian International Student Mobility Awards (IISMA)', value: "Indonesian International Student Mobility Awards (IISMA)" },
+        { label: 'Beasiswa Lembaga Pengelola Dana Pendidikan Kemenkeu 2025', value: "Beasiswa Lembaga Pengelola Dana Pendidikan Kemenkeu 2025" },
         { label: 'Beasiswa Unggulan Kemendikbudristek 2024', value: "Beasiswa Unggulan Kemendikbudristek 2024" },
+        { label: 'Beasiswa Pendidikan Indonesia Kemendikbudristek', value: "Beasiswa Pendidikan Indonesia Kemendikbudristek" },
     ],
     [
         { label: 'PILIH BATCH', value: 0 },

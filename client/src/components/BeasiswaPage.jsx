@@ -8,10 +8,16 @@ const options = [
         { label: 'Pilih tingkat', value: '' },
         { label: 'S1', value: 'S1' },
         { label: 'S2', value: 'S2' },
+        { label: 'S3', value: 'S3' },
+        { label: 'S1/S2', value: 'S1/S2' },
+        { label: 'S2/S3', value: 'S2/S3' },
+        { label: 'S1/S2/S3', value: 'S1/S2/S3' },
     ],
     [
         { label: 'Pilih komponen', value: '' },
         { label: 'Fully Funded', value: 'Fully Funded' },
+        { label: 'UKT Funded', value: 'UKT Funded' },
+        { label: 'Living Cost', value: 'Living Cost' },
     ],
 ];
 
