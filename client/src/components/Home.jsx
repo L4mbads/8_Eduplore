@@ -27,7 +27,7 @@ export default function Home() {
 
 
     return (
-        <div className="">
+        <div className="overflow-x-hidden">
             <div className="pt-10 px-4 sm:px-8 lg:px-16 overflow-x-hidden overflow-y-hidden"> {/* Bagian Home */}
                 <div className="flex items-center pb-5"> {/* Judul Home*/}
                     <img alt="Home" src="../src/assets/Home.png" className="size-9"></img>
@@ -98,7 +98,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row gap-4">
                             <img src="../src/assets/Mentor2.png" alt="Superexclusive" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
-                                <h3 className="font-bold text-2xl">SUPER-EXCLUSIVE</h3>
+                                <h3 className="font-bold text-2xl max-xl:">SUPER-EXCLUSIVE</h3>
                                 <p className="text-sm mt-2">Mentoring Eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang dibutuhkan</p>
                                 <div className="flex items-center justify-between mt-4">
                                     
@@ -163,7 +163,7 @@ export default function Home() {
                         <p className="text-white text-4xl font-bold italic pt-20 pb-80">Sekarang giliran kamu!</p>
 
                     </div>
-                    <div className="grid grid-cols-2 relative max-xl:hidden"> {/* Foto */}
+                    <div className="grid grid-cols-2 relative max-xl:none"> {/* Foto */}
                         <img src="../src/assets/Xaviera.png"></img>
                         <img src="../src/assets/Maudy.png"></img>
                         <img src="../src/assets/Axel.png" className="absolute top-80"></img>
