@@ -2,31 +2,41 @@ import { NavLink } from "react-router-dom";
 
 export default function Footer() {
     return (
-        <footer className="py-20 pl-20 bg-white shadow-xl z-50">
-            <div className="flex justify-start items-center h-24 py-3 pl-5">
-                <img src="../src/assets/eduplore(nama).png" className="h-16 w-auto inline mr-48"></img>
-                <p className="inline-flex items-center justify-center h-9 rounded-md px-3">Media informasi dan partner persiapan beasiswa untuk masa depanmu.</p>
+        <footer className="py-10 bg-white shadow-xl z-50">
+            <div className="flex flex-col md:flex-row justify-start items-start md:items-center h-auto md:h-24 py-3 px-5 md:px-20">
+                {/* Logo and Description */}
+                <img 
+                    src="../src/assets/eduplore(nama).png" 
+                    className="h-16 w-auto mb-4 md:mb-0 md:mr-8"
+                    alt="Eduplore Logo"
+                />
+                <p className="inline-flex items-center justify-center text-sm text-center md:text-left h-9 rounded-md">
+                    Media informasi dan partner persiapan beasiswa untuk masa depanmu.
+                </p>
             </div>
-            <div className="h-0.5 bg-blue mr-10">
 
-            </div>
-            <div className="flex justify-start pt-20 gap-x-48 pl-5">
-                <div> {/* Hubungi kami */}
-                    <h3 className="font-bold text-xl">Hubungi Kami</h3>
-                    <div className="flex justify-start pt-6">
-                        <img src="../src/assets/Phone.png" className="mr-4 size-9"></img>
+            {/* Separator Line */}
+            <div className="h-0.5 bg-blue mx-5 md:mx-20 my-5 md:my-10"></div>
+
+            {/* Contact and Social Media Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-y-0 px-5 md:px-20">
+                {/* Hubungi Kami Section */}
+                <div>
+                    <h3 className="font-bold text-xl mb-4">Hubungi Kami</h3>
+                    <div className="flex items-start py-2">
+                        <img src="../src/assets/Phone.png" alt="Phone" className="mr-4 h-6 w-6" />
                         <p>022-2500935</p>
                     </div>
-                    <div className="flex justify-start pt-6">
-                        <img src="../src/assets/Whatsapp.png" className="mr-4 size-9"></img>
+                    <div className="flex items-start py-2">
+                        <img src="../src/assets/Whatsapp.png" alt="Whatsapp" className="mr-4 h-6 w-6" />
                         <p>0812345678910</p>
                     </div>
-                    <div className="flex justify-start pt-6">
-                        <img src="../src/assets/Gmail Logo.png" className="mr-4 sizs-9"></img>
-                        <p>eduplore.kelompok8@gmail.com</p>
+                    <div className="flex items-start py-2">
+                        <img src="../src/assets/Gmail Logo.png" alt="Email" className="mr-4 h-6 w-6" />
+                        <p className="break-words">eduplore.kelompok8@gmail.com</p>
                     </div>
-                    <div className="flex justify-start pt-6">
-                        <img src="../src/assets/Address.png" className="mr-4 size-9"></img>
+                    <div className="flex items-start py-2">
+                        <img src="../src/assets/Address.png" alt="Address" className="mr-4 h-6 w-6" />
                         <div className="grid grid-cols-1">
                             <p>Jl. Ganesa No.10</p>
                             <p>Lb. Siliwangi, Kecamatan Coblong</p>
@@ -34,17 +44,17 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div> {/* Media sosial */}
-                    <h3 className="font-bold text-xl">Media Sosial</h3>
-                    <div className="grid grid-cols-3 pt-6">
-                        <img src="../src/assets/instagram.png" className="mr-4 sizs-9"></img>
-                        <img src="../src/assets/youtube.png" className="mr-4 sizs-9"></img>
-                        <img src="../src/assets/Facebook.png" className="mr-4 sizs-9"></img>
+
+                {/* Media Sosial Section */}
+                <div>
+                    <h3 className="font-bold text-xl mb-4">Media Sosial</h3>
+                    <div className="flex gap-4">
+                        <img src="../src/assets/instagram.png" alt="Instagram" className="h-8 w-8" />
+                        <img src="../src/assets/youtube.png" alt="YouTube" className="h-8 w-8" />
+                        <img src="../src/assets/Facebook.png" alt="Facebook" className="h-8 w-8" />
                     </div>
                 </div>
-
             </div>
         </footer>
     );
-
 }
