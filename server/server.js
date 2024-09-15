@@ -14,6 +14,7 @@ const corsOptions = {
     const allowedOrigins = [
       "http://localhost:5173",
       "https://eduplore.vercel.app",
+      "https://eduplore-api.vercel.app",
     ];
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
