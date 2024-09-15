@@ -12,7 +12,7 @@
       "dest": "/server.js",
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       "headers": {
-        "Access-Control-Allow-Origin": "https://eduplore.vercel.app",
+        "Access-Control-Allow-Origin": "https://eduplore.vercel.app, https://eduplore-api.vercel.app",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Credentials": "true"
