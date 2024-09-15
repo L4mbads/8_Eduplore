@@ -112,8 +112,8 @@ export default function UserPage() {
                     <button className="transition-all text-blue font-semibold tracking-wide hover:translate-x-2 hover:scale-125 hover:text-blue-80" type="button" onClick={() => (navigate(-1))}>Kembali</button>
                 </div>
 
-                <h1 className="text-center md:text-left text-3xl md:text-5xl px-4 pt-8 font-semibold tracking-wide">
-                    Profil
+                <h1 className="text-center text-3xl md:text-5xl px-4 pt-8 font-semibold tracking-wide">
+                    Profile
                 </h1>
 
                 <div className="flex items-center justify-center">
