@@ -83,7 +83,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row gap-4">
                             <img src="../src/assets/Mentor1.png" alt="Supercamp" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
-                                <h3 className="font-bold text-2xl max-xl:text-base">SUPERCAMP</h3>
+                                <h3 className="font-bold text-2xl max-2xl:text-base">SUPERCAMP</h3>
                                 <p className="text-sm mt-2">Rangkaian kelas intensif untuk mempersiapkan pendaftaran dari seleksi berkas hingga tahap interview pada beasiswa tertentu</p>
                                 <div className="flex items-center justify-between mt-4">
                                     
@@ -98,7 +98,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row gap-4">
                             <img src="../src/assets/Mentor2.png" alt="Superexclusive" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
-                                <h3 className="font-bold text-2xl max-xl:text-base">SUPER-EXCLUSIVE</h3>
+                                <h3 className="font-bold text-2xl max-2xl:text-base">SUPER-EXCLUSIVE</h3>
                                 <p className="text-sm mt-2">Mentoring Eksklusif 1-on-1 dengan mentor ahli di bidangnya yang disesuaikan dengan apa yang dibutuhkan</p>
                                 <div className="flex items-center justify-between mt-4">
                                     
@@ -113,7 +113,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row gap-4">
                             <img src="../src/assets/Mentor3.png" alt="Superboost" className="w-full h-32 object-cover rounded-md md:w-1/3" />
                             <div className="flex flex-col justify-between">
-                                <h3 className="font-bold text-2xl max-xl:text-base">SUPERBOOST</h3>
+                                <h3 className="font-bold text-2xl max-2xl:text-base">SUPERBOOST</h3>
                                 <p className="text-sm mt-2">Peningkatan skill secara terpisah untuk CV, Esai, dan Interview dengan metode teori sekaligus praktik langsung</p>
                                 <div className="flex items-center justify-between mt-4">
                                     
